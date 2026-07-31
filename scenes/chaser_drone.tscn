@@ -1,19 +1,21 @@
-[gd_scene format=3 uid="uid://bs5miq50v8ms5"]
+[gd_scene format=3 uid="uid://bxre2vwu1pyyo"]
 
-[ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="1_dil0n"]
-[ext_resource type="Script" uid="uid://c63gwu2q3ycql" path="res://scripts/drone.gd" id="1_knnud"]
+[ext_resource type="Script" uid="uid://c63gwu2q3ycql" path="res://scripts/chaser_drone.gd" id="1_etm3g"]
+[ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="2_gxmb1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]
 
-[node name="Drone" type="RigidBody2D" unique_id=821450291]
+[node name="ChaserDrone" type="RigidBody2D" unique_id=821450291 groups=["Enemies"]]
+collision_layer = 4
+collision_mask = 7
 input_pickable = true
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 1
-script = ExtResource("1_knnud")
+script = ExtResource("1_etm3g")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1141466548]
-texture = ExtResource("1_dil0n")
+texture = ExtResource("2_gxmb1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=701951204]
 scale = Vector2(6, 6)

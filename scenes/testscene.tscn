@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://bahd6u56ic8y2"]
 
-[ext_resource type="Script" uid="uid://f40xhl73u7mv" path="res://scripts/test_script.gd" id="1_7y2xs"]
 [ext_resource type="PackedScene" uid="uid://c0300sep5wrm4" path="res://scenes/player.tscn" id="2_r32pp"]
-[ext_resource type="PackedScene" uid="uid://bs5miq50v8ms5" path="res://scenes/drone.tscn" id="3_65iv0"]
+[ext_resource type="PackedScene" uid="uid://bxre2vwu1pyyo" path="res://scenes/chaser_drone.tscn" id="3_l2n4a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]
 size = Vector2(1174, 20)
@@ -11,17 +10,20 @@ size = Vector2(1174, 20)
 size = Vector2(14, 633)
 
 [node name="test_scene" type="Node2D" unique_id=772019489]
-script = ExtResource("1_7y2xs")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1899305479]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1899305479 groups=["Static"]]
 position = Vector2(-9, 639)
+collision_layer = 2
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=595877572]
 position = Vector2(577, 0)
 shape = SubResource("RectangleShape2D_x15ge")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=51339877]
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=51339877 groups=["Static"]]
 position = Vector2(-9, 10)
+collision_layer = 2
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1940546640]
 position = Vector2(577, 0)
@@ -30,18 +32,24 @@ shape = SubResource("RectangleShape2D_x15ge")
 [node name="Player" parent="." unique_id=986072940 instance=ExtResource("2_r32pp")]
 position = Vector2(519, 563)
 
-[node name="Drone" parent="." unique_id=821450291 instance=ExtResource("3_65iv0")]
-position = Vector2(752, 251)
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=492096612]
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=492096612 groups=["Static"]]
+collision_layer = 2
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=769059916]
 position = Vector2(-3, 306.5)
 shape = SubResource("RectangleShape2D_k0akp")
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=1806006802]
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=1806006802 groups=["Static"]]
 position = Vector2(1155, 23)
+collision_layer = 2
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=1309185813]
 position = Vector2(-3, 306.5)
 shape = SubResource("RectangleShape2D_k0akp")
+
+[node name="ChaserDrone" parent="." unique_id=821450291 instance=ExtResource("3_l2n4a")]
+position = Vector2(775, 233)
+
+[node name="ChaserDrone2" parent="." unique_id=1173444411 instance=ExtResource("3_l2n4a")]

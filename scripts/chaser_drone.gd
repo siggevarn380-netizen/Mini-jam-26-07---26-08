@@ -1,7 +1,10 @@
 extends RigidBody2D
 
+@export var impact_tolerance : float = 1000 #The speed required for a drone to explode when impacting terrain or walls
+
 var dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
+var _last_velocity: Vector2 # Stash last speed before impact
 
 signal toggle_powers()
 
@@ -17,7 +20,7 @@ func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if dragging and event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
-			finish_draggin()
+			finish_dragging()
 
 func begin_dragging() -> void:
 	dragging = true
@@ -26,7 +29,7 @@ func begin_dragging() -> void:
 	last_mouse_position.clear()
 	toggle_powers.emit()
 
-func finish_draggin() -> void:
+func finish_dragging() -> void:
 	dragging = false
 	freeze = false # reactiva la física -> vuelve a caer
 	toggle_powers.emit()
@@ -45,9 +48,20 @@ func _physics_process(_delta: float) -> void:
 		last_mouse_position.append(get_global_mouse_position())
 		if last_mouse_position.size() > VELOCITY_SAMPLES:
 			last_mouse_position.pop_front()
-
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	_last_velocity = state.linear_velocity
 func _on_body_entered(_body: Node) -> void:
-	destroy()
+	var to_body = (_body.global_position - global_position).normalized()
+	var closing_speed = _last_velocity.dot(to_body)
+	print(closing_speed)
+	if closing_speed < impact_tolerance:
+		pass
+	else:
+		if _body.is_in_group("Player"):
+			_body.take_damage(1)
+		elif _body.is_in_group("Enemies"): 
+			_body.destroy()
+		destroy()
 	
 func destroy():
 	set_deferred("freeze", true)
