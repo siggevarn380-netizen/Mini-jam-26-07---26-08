@@ -6,6 +6,7 @@ enum DragState{READY, DRAGGED, RELEASED}
 
 const REST_ROTATION: float = 0.0
 
+@export var impact_tolerance : float = 100 #The speed required for a drone to explode when impacting terrain or walls
 @export var comp_timer: Timer
 @export var speed: float = 300.0
 @export var right_stiffness: float = 8.0
@@ -38,9 +39,15 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		var err := angle_difference(rotation, REST_ROTATION)
 		state.angular_velocity = clampf(err * right_stiffness, -max_right_speed, max_right_speed)
 func _on_body_entered(body: Node) -> void:
-	if not body.is_in_group("Static"): 
-		body.take_damage.emit(1)
-	take_damage.emit(1)
+	var to_body = (body.global_position - global_position).normalized()
+	var closing_speed = _last_velocity.dot(to_body)
+	print(closing_speed)
+	if closing_speed < impact_tolerance:
+		pass
+	else:
+		if not body.is_in_group("Static"): 
+			body.take_damage.emit(1)
+		take_damage.emit(1)
 func _on_dragged() -> void:
 	dragstate = DragState.DRAGGED
 

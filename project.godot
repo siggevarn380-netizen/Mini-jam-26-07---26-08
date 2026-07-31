@@ -13,6 +13,10 @@ config_version=5
 config/name="mini jam 26/07"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
+[autoload]
+
+PlayerData="*uid://dc3h7xc8o0fh0"
+
 [display]
 
 window/stretch/mode="canvas_items"
@@ -66,6 +70,7 @@ Sprint={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Static"
 2d_physics/layer_3="Enemies"
+2d_physics/layer_4="Power"
 
 [physics]
 

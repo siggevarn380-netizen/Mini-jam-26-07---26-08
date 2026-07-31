@@ -50,6 +50,9 @@ position = Vector2(-3, 306.5)
 shape = SubResource("RectangleShape2D_k0akp")
 
 [node name="ChaserDrone" parent="." unique_id=821450291 instance=ExtResource("3_l2n4a")]
-position = Vector2(775, 233)
+position = Vector2(179, 313)
 
-[node name="ChaserDrone2" parent="." unique_id=1173444411 instance=ExtResource("3_l2n4a")]
+[node name="ChaserDrone2" parent="." unique_id=794226470 instance=ExtResource("3_l2n4a")]
+position = Vector2(953, 247)
+
+[editable path="Player"]

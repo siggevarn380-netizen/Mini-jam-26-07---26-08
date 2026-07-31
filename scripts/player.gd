@@ -1,7 +1,11 @@
 extends CharacterBody2D
 
+signal take_damage
+
 var using_powers: bool = false
 
+@export_group("Nodes")
+@export var power: Area2D
 @export_group("Basic Movement")
 @export var base_speed = 400.0
 @export var sprint_speed = 600.0
@@ -30,6 +34,7 @@ func _physics_process(delta: float) -> void:
 	var dash = Input.get_axis("Dash_Left", "Dash_Right")
 	var jump = Input.is_action_just_pressed("Jump")
 	var sprinting = Input.is_action_pressed("Sprint")
+	var click = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
 	# [CALCULATIONS]
 	var speed = sprint_speed if sprinting else base_speed
 	var target_vel = speed * direction if direction else 0.0
@@ -45,11 +50,19 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, target_vel, accel)
 	move_and_slide()
-
-func toggle_using_powers():
-	using_powers = !using_powers
-
-func take_damage(amount: int):
-	current_health -= amount
-	print("Remaining health:", current_health)
 	
+	if click:
+		var pos = get_global_mouse_position()
+		power._apply_power(pos)
+	else:
+		power._disable_power()
+	if absf(velocity.x) >= 10.0:
+		power.moving = true
+
+func add_score(amount: float) -> void:
+	PlayerData.score += amount
+	power.max_range += amount
+
+
+func _on_player_health_death() -> void:
+	pass # Replace with function body.
