@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bxre2vwu1pyyo"]
+
+[ext_resource type="Script" uid="uid://c63gwu2q3ycql" path="res://scripts/Enemies/chaser_drone.gd" id="1_etm3g"]
+[ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="2_etm3g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]
+
+[node name="ChaserDrone" type="RigidBody2D" unique_id=821450291 node_paths=PackedStringArray("comp_timer") groups=["Enemies"]]
+collision_layer = 4
+collision_mask = 7
+input_pickable = true
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_etm3g")
+comp_timer = NodePath("ComposureTimer")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1521908960]
+texture = ExtResource("2_etm3g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=701951204]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_x15ge")
+
+[node name="ComposureTimer" type="Timer" parent="." unique_id=991341170]
+process_callback = 0
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="take_damage" from="." to="." method="_on_take_damage"]

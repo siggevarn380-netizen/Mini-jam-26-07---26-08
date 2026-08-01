@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://c0300sep5wrm4"]
 
 [ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://ohk25ephixj7" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://ohk25ephixj7" path="res://scripts/Player/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://fsb3vtgiq83d" path="res://scripts/Player/powercenter.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://cmk7cxhtgjwwq" path="res://scripts/Player/player_health.gd" id="4_dqkch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]
 
-[node name="Player" type="CharacterBody2D" unique_id=986072940]
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
+radius = 50.0
+
+[node name="Player" type="CharacterBody2D" unique_id=986072940 groups=["Player"]]
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=797579843]
@@ -14,3 +19,33 @@ texture = ExtResource("1_3vyb7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1745588340]
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_x15ge")
+
+[node name="PowerCenter" type="Area2D" parent="." unique_id=2111074893 node_paths=PackedStringArray("rShape", "sprite")]
+top_level = true
+collision_layer = 8
+collision_mask = 4
+gravity_point = true
+gravity_point_unit_distance = 1.0
+script = ExtResource("3_qhqgy")
+rShape = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+start_size = 100.0
+start_max = 1000.0
+strength = 80000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PowerCenter" unique_id=1687828294]
+z_index = 1
+shape = SubResource("CircleShape2D_qhqgy")
+debug_color = Color(0.8521896, 0.19326013, 0.7788795, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="PowerCenter" unique_id=735858783]
+visible = false
+texture = ExtResource("1_3vyb7")
+
+[node name="PlayerHealth" type="Node2D" parent="." unique_id=707798586]
+script = ExtResource("4_dqkch")
+starting_health = 5
+
+[connection signal="take_damage" from="." to="PlayerHealth" method="_on_player_take_damage"]
+[connection signal="death" from="PlayerHealth" to="." method="_on_player_health_death"]
+[connection signal="got_hit" from="PlayerHealth" to="." method="_on_player_health_got_hit"]

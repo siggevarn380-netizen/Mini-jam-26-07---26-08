@@ -18,6 +18,11 @@ config/features=PackedStringArray("4.7", "GL Compatibility")
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[global_group]
+
+Enemies=""
+Player=""
+
 [input]
 
 dash={

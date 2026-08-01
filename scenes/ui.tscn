@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://ctgt6u8o4kk5w"]
+
+[ext_resource type="Script" uid="uid://cfcvuudgp435p" path="res://scripts/ui.gd" id="1_x4jx1"]
+[ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="2_yev5y"]
+
+[node name="UI" type="CanvasLayer" unique_id=1353638227]
+script = ExtResource("1_x4jx1")
+
+[node name="PlayerUI" type="Control" parent="." unique_id=601780104]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 509.0
+offset_bottom = 127.0
+
+[node name="Portrait" type="TextureRect" parent="PlayerUI" unique_id=1692776219]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_yev5y")
+
+[node name="HealthBar" type="ProgressBar" parent="PlayerUI" unique_id=1005569049]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 3.0
+offset_right = 424.0
+offset_bottom = 39.0
+show_percentage = false
+
+[node name="HealthText" type="Label" parent="PlayerUI/HealthBar" unique_id=631300215]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "0/0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreUI" type="Control" parent="." unique_id=2044940164]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -280.0
+offset_bottom = 92.0
+grow_horizontal = 0
+
+[node name="ScoreLabel" type="Label" parent="ScoreUI" unique_id=1153230447]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 30
+text = "Points:"
+
+[node name="ScoreValues" type="Label" parent="ScoreUI" unique_id=66965679]
+layout_mode = 0
+offset_left = 104.0
+offset_right = 276.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 30
+text = "100"
+vertical_alignment = 1
