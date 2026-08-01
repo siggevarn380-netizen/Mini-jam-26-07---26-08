@@ -1,8 +1,9 @@
+class_name Drone
 extends RigidBody2D
 signal take_damage()
 signal toggle_powers
 
-enum State{SEEK, HOVER, CHARGE, DRAGGED, RELEASED}
+enum State{SEEK, HOVER, DRAGGED, RELEASED, _NEXT}
 
 const REST_ROTATION: float = 0.0
 
@@ -23,7 +24,6 @@ const REST_ROTATION: float = 0.0
 @export var arrive_threshold: float = 20.0
 @export_flags_2d_physics var enemy_layer_mask: int = 6
 @export var roll_interval: float = 0.5
-@export var charge_accel: float = 500
 @export var max_seek_time: float = 3.0
 @export var accel_gain: float = 8.0
 @export var slow_radius: float = 200.0
@@ -47,7 +47,6 @@ var hover_time: float = 0.0
 var hover_elapsed: float = 0.0
 var seek_elapsed: float = 0.0
 var roll_timer: float = 0.0
-var charge_target: Vector2
 var hover_phase: float = 0.0
 var my_arc: float = 0.0
 var wobble_phase: float = 0.0
@@ -83,24 +82,22 @@ func _physics_process(delta: float) -> void:
 			var opportunity := false
 			if roll_timer >= roll_interval:
 				roll_timer = 0.0
-				if _path_is_clear():
-					var ratio := clampf(absf(target.velocity.x) / target.max_speed, 0.0, 1.0)
-					var chance := pow(1.0 - ratio, 2.0)
-					opportunity = randf() < chance
+				opportunity = _roll_for_action()
 			if forced or opportunity:
-				#_enter_charge()
-				pass
-		State.CHARGE:
-			var dir := (charge_target - global_position).normalized()
-			dir = (dir + _get_separation() * 0.5).normalized()
-			apply_central_force(dir * charge_accel * mass)
+				_on_hover_action()
 		State.DRAGGED:
 			pass
 		State.RELEASED:
 			if comp_timer.is_stopped(): _enter_seek()
 			else:
 				linear_velocity.y += 10
-				
+
+# --- hooks for subclasses ---
+func _roll_for_action() -> bool:
+	return false
+func _on_hover_action() -> void:
+	pass
+
 func _enter_seek() -> void:
 	state = State.SEEK
 	if not is_instance_valid(target):
@@ -126,10 +123,6 @@ func _enter_hover() -> void:
 	state = State.HOVER
 	hover_elapsed = 0.0
 	roll_timer = 0.0
-func _enter_charge() -> void:
-	state = State.CHARGE
-	charge_target = target.global_position
-	linear_damp = 0.0
 
 func _hover_angle() -> float:
 	var t := fmod(hover_time * hover_freq + hover_phase, TAU) / TAU
