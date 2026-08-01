@@ -26,10 +26,8 @@ window/stretch/aspect="expand"
 
 Enemies=""
 Player=""
-<<<<<<< HEAD
 Static=""
-=======
->>>>>>> legolas
+<<<<<<<HEADStatic=""
 
 [input]
 

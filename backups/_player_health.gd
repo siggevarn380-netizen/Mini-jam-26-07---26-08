@@ -1,4 +1,4 @@
-class_name Health extends Node2D
+class_name PlayerHealth extends Node2D
 
 signal death
 
