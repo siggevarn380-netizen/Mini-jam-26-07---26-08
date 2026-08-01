@@ -3,14 +3,14 @@ signal take_damage(dmg: int)
 signal toggle_powers
 enum DragState{READY, DRAGGED, RELEASED}
 
-@export var impact_tolerance: float = 100 # Velocidad requerida para explotar/dañar al impactar
+@export var impact_tolerance: float = 100 
 @export var comp_timer: Timer
 @export var speed: float = 200.0
 @export var right_stiffness: float = 8.0
 @export var max_right_speed: float = 3.0
 
-@export var stop_distance: float = 250.0   # Se detiene si está más cerca que esto
-@export var resume_distance: float = 320.0 # Vuelve a moverse si está más lejos que esto (histéresis)
+@export var stop_distance: float = 500.0
+@export var resume_distance: float = 700.0 
 
 @export var fire_timer: Timer
 const bullet_scene = preload("res://scenes/bullet.tscn")
@@ -33,7 +33,6 @@ func _physics_process(delta: float) -> void:
 			var to_target = target.global_position - global_position
 			var dist = to_target.length()
 
-			# Histéresis: evita que tiemble entrando/saliendo del rango
 			if _in_range:
 				if dist > resume_distance:
 					_in_range = false

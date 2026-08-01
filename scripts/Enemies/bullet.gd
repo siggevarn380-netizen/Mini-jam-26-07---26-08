@@ -13,7 +13,7 @@ func launch(dir: Vector2) -> void:
 	rotation = direction.angle()
 
 func _on_body_entered(body: Node) -> void:
-	if body.is_in_group("Player"):
-		if !body.is_invulnerable:
+	if !body.is_in_group("Enemies"):
+		if body.is_in_group("Player") and !body.is_invulnerable:
 			body.take_damage.emit(damage)
 		queue_free()
