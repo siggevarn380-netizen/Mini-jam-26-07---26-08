@@ -30,8 +30,8 @@ anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 43.0
 offset_top = -125.0
-offset_right = 543.0
-offset_bottom = 125.0
+offset_right = 1043.0
+offset_bottom = 175.0
 grow_vertical = 2
 
 [node name="SpeakerLabel" type="Label" parent="TextBox" unique_id=493179522]
@@ -40,18 +40,33 @@ offset_left = 22.0
 offset_top = 3.0
 offset_right = 116.0
 offset_bottom = 37.0
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 40
 text = "Speaker"
 
-[node name="TextLabel" type="RichTextLabel" parent="TextBox" unique_id=1685029862]
+[node name="TextLabel" type="Label" parent="TextBox" unique_id=2048464183]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 15.0
-offset_top = 40.0
-offset_right = -20.0
-offset_bottom = -36.0
+offset_left = 20.0
+offset_top = 59.0
+offset_right = -15.0
+offset_bottom = -63.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 28
 text = "Sample text"
+
+[node name="AdvanceButton" type="Button" parent="TextBox" unique_id=1905238010]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 36
+text = "Next"

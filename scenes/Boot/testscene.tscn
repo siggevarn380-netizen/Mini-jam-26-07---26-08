@@ -3,9 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c0300sep5wrm4" path="res://scenes/Player/player.tscn" id="1_2vyep"]
 [ext_resource type="PackedScene" uid="uid://ctgt6u8o4kk5w" path="res://scenes/Player/ui.tscn" id="2_ec0l3"]
 [ext_resource type="Script" uid="uid://cs5hy7cwe0f16" path="res://scripts/Player/camera_2d.gd" id="3_65iv0"]
-[ext_resource type="PackedScene" uid="uid://caktox5hh3nmu" path="res://scenes/neurone.tscn" id="4_l2n4a"]
-[ext_resource type="PackedScene" uid="uid://b725ra5qsjmq1" path="res://scenes/heart.tscn" id="5_ye8wr"]
-[ext_resource type="PackedScene" uid="uid://dep8jb0h4ur6u" path="res://scenes/drone_spawner.tscn" id="6_ckmbu"]
+[ext_resource type="PackedScene" uid="uid://dga8etnliag8i" path="res://scenes/Player/pause_menu.tscn" id="4_1g402"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]
 size = Vector2(3661, 20)
@@ -34,18 +32,4 @@ drag_horizontal_enabled = true
 script = ExtResource("3_65iv0")
 target = NodePath("../Player")
 
-[node name="Neurone" parent="." unique_id=1212960953 instance=ExtResource("4_l2n4a")]
-position = Vector2(903, 578)
-type = 2
-
-[node name="Neurone2" parent="." unique_id=1615696260 instance=ExtResource("4_l2n4a")]
-position = Vector2(1053, 577)
-
-[node name="Heart" parent="." unique_id=1118314492 instance=ExtResource("5_ye8wr")]
-position = Vector2(831, 581)
-
-[node name="Heart2" parent="." unique_id=2037333035 instance=ExtResource("5_ye8wr")]
-position = Vector2(721, 579)
-
-[node name="drone_spawner" parent="." unique_id=445609616 instance=ExtResource("6_ckmbu")]
-position = Vector2(800, 273)
+[node name="PauseMenu" parent="." unique_id=1993781402 instance=ExtResource("4_1g402")]

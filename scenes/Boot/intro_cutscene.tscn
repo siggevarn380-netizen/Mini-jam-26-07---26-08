@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://8674smu2itvp"]
 
 [ext_resource type="Script" uid="uid://cgouxk7lcs5u1" path="res://scripts/intro_cutscene.gd" id="1_6nh0c"]
+[ext_resource type="VideoStream" uid="uid://db0mumcv42vq8" path="res://DroneGameIntro1920.ogv" id="2_f6kty"]
 
 [node name="IntroCutscene" type="Control" unique_id=92119778]
 layout_mode = 3
@@ -15,4 +16,7 @@ script = ExtResource("1_6nh0c")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+stream = ExtResource("2_f6kty")
 autoplay = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1236409127]

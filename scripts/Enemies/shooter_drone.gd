@@ -1,7 +1,7 @@
 extends Drone
 
 @export var fire_timer: Timer
-const bullet_scene = preload("res://scenes/bullet.tscn")
+const bullet_scene = preload("res://scenes/Enemy/bullet.tscn")
 @export var muzzle: Marker2D
 @export var bullet_speed: float = 500.0
 @export var bullet_damage: int = 1
