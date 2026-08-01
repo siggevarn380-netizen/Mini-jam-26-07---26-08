@@ -8,13 +8,18 @@ signal take_damage
 @export var base_speed = 400.0
 @export var sprint_speed = 600.0
 @export var accel = 200.0
+@export var max_speed: float = 1000
 @export_group("Jump")
 @export var jump_vel = 400.0
 @export_group("Dash")
 @export var dash_speed = 3000.0
 @export var dash_cooldown = 1.0
+@export_group("Other")
+@export var base_power_range: float = 300
+
 
 var dash_cooldown_timer = 0.0
+var power_range = base_power_range
 
 func _process(delta: float) -> void:
 	dash_cooldown_timer = maxf(dash_cooldown_timer - delta, 0.0)
@@ -43,7 +48,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	if click:
-		var pos = get_global_mouse_position()
+		var to_mouse = get_global_mouse_position() - global_position
+		var pos = global_position + to_mouse.limit_length(power_range)
 		power._apply_power(pos)
 	else:
 		power._disable_power()
