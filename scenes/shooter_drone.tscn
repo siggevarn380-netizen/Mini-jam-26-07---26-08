@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://b13hogkw18sou"]
+[gd_scene format=3 uid="uid://dah763nngrhv0"]
 
-[ext_resource type="Script" uid="uid://c63gwu2q3ycql" path="res://scripts/Enemies/chaser_drone.gd" id="1_w207v"]
-[ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="2_ltouy"]
+[ext_resource type="Script" uid="uid://dvwkmnj5uk4qt" path="res://scripts/Enemies/shooter_drone.gd" id="1_gwof2"]
+[ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="2_kqdat"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_etm3g"]
 friction = 0.0
@@ -12,7 +12,7 @@ size = Vector2(5, 5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_cassd"]
 radius = 64.12
 
-[node name="ChaserDrone" type="RigidBody2D" unique_id=821450291 node_paths=PackedStringArray("sep_field", "comp_timer") groups=["Drones", "Enemies"]]
+[node name="shooter_drone" type="RigidBody2D" unique_id=821450291 node_paths=PackedStringArray("fire_timer", "muzzle", "sep_field", "comp_timer") groups=["Drones", "Enemies"]]
 collision_layer = 4
 collision_mask = 7
 input_pickable = true
@@ -20,43 +20,20 @@ physics_material_override = SubResource("PhysicsMaterial_etm3g")
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 1
-script = ExtResource("1_w207v")
+script = ExtResource("1_gwof2")
+fire_timer = NodePath("FireTimer")
+muzzle = NodePath("Muzzle")
 sep_field = NodePath("SeparationField")
-impact_tolerance = null
 comp_timer = NodePath("ComposureTimer")
-speed = null
-right_stiffness = null
-max_right_speed = null
-max_hover_dist = null
-hover_freq = null
-hover_arc = null
-max_arc = null
-max_hover_time = null
-arrive_threshold = null
-enemy_layer_mask = 16
-roll_interval = null
-charge_accel = null
-max_seek_time = null
-accel_gain = null
-slow_radius = null
-ring_count = null
-ring_spacing = null
-arc_jitter = null
-dist_jitter = null
-wobble_amp = null
-wobble_freq = null
-sep_radius = null
-separation_weight = null
-avoid_horizon = null
-lateral_bias = null
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1521908960]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_ltouy")
+texture = ExtResource("2_kqdat")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=701951204]
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_x15ge")
+debug_color = Color(0.061795115, 0.6345884, 0.41156435, 0.41960785)
 
 [node name="ComposureTimer" type="Timer" parent="." unique_id=991341170]
 process_callback = 0
@@ -69,7 +46,14 @@ collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SeparationField" unique_id=1756134581]
 shape = SubResource("CircleShape2D_cassd")
-debug_color = Color(0.6570752, 0.51661456, 0, 0.41960785)
+debug_color = Color(0, 0.6242745, 0.54636544, 0.41960785)
+
+[node name="FireTimer" type="Timer" parent="." unique_id=1252489409 groups=["Enemies"]]
+wait_time = 2.0
+autostart = true
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1904653447]
+position = Vector2(0, 20)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="take_damage" from="." to="." method="_on_take_damage"]

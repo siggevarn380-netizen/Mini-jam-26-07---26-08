@@ -8,8 +8,12 @@ const bullet_scene = preload("res://scenes/bullet.tscn")
 @export var seek_shot_speed: float = 1.5
 @export var fire_range: float = 900.0
 
-
+func _ready() -> void:
+	super()
+	fire_timer.timeout.connect(_on_fire_timer_timeout)
+	fire_timer.start()
 func _physics_process(delta: float) -> void:
+	print(state, " ", target, " ", hover_dist)
 	if state == State.HOVER and is_instance_valid(target) and not _shot_is_clear():
 		hover_phase += seek_shot_speed * delta
 	super(delta)
@@ -32,6 +36,8 @@ func _shot_is_clear() -> bool:
 	if not is_instance_valid(target): return false
 	var space = get_world_2d().direct_space_state
 	var exclude: Array[RID] = [get_rid()]
+	if target is PhysicsBody2D:
+		exclude.append(target.get_rid())
 	for other in get_tree().get_nodes_in_group("Drones"):
 		if other is PhysicsBody2D and other != self:
 			exclude.append(other.get_rid())

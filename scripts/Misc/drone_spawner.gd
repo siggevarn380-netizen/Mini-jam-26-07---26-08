@@ -7,9 +7,10 @@ var spawn_elapsed = 0.0
 
 func _process(delta: float) -> void:
 	spawn_elapsed = minf(spawn_elapsed + delta, spawn_interval)
-	if spawn_elapsed == 10:
+	if spawn_elapsed == spawn_interval:
 		spawn_drone()
 		spawn_elapsed = 0.0
+		print("Spawning drone")
 func pick() -> PackedScene:
 	var total = 0.0
 	for d in drone_list:
@@ -28,4 +29,3 @@ func spawn_drone() -> void:
 	var drone = scene.instantiate()
 	get_tree().current_scene.add_child(drone)
 	drone.global_position = global_position
-	

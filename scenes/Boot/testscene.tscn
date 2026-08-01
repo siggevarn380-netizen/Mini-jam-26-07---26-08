@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cs5hy7cwe0f16" path="res://scripts/Player/camera_2d.gd" id="3_65iv0"]
 [ext_resource type="PackedScene" uid="uid://caktox5hh3nmu" path="res://scenes/neurone.tscn" id="4_l2n4a"]
 [ext_resource type="PackedScene" uid="uid://b725ra5qsjmq1" path="res://scenes/heart.tscn" id="5_ye8wr"]
+[ext_resource type="PackedScene" uid="uid://dep8jb0h4ur6u" path="res://scenes/drone_spawner.tscn" id="6_ckmbu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]
 size = Vector2(3661, 20)
@@ -45,3 +46,6 @@ position = Vector2(831, 581)
 
 [node name="Heart2" parent="." unique_id=2037333035 instance=ExtResource("5_ye8wr")]
 position = Vector2(721, 579)
+
+[node name="drone_spawner" parent="." unique_id=445609616 instance=ExtResource("6_ckmbu")]
+position = Vector2(800, 273)

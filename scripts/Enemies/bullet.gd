@@ -14,6 +14,6 @@ func launch(dir: Vector2) -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if !body.is_in_group("Enemies"):
-		if body.is_in_group("Player") and !body.is_invulnerable:
+		if body.is_in_group("Player") and !body.get_node("PlayerHealth").is_invulnerable:
 			body.take_damage.emit(damage)
 		queue_free()
