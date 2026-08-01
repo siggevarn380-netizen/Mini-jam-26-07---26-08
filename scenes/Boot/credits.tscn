@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://dvkert4jed8gm"]
+
+[ext_resource type="Script" uid="uid://8p54k233l450" path="res://scripts/credits.gd" id="1_nxukm"]
+
+[node name="Credits" type="Control" unique_id=819791625]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nxukm")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1137958867]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="TextureRect" unique_id=101477181]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 269.0
+offset_right = -276.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="TextureRect/Panel" unique_id=831685077]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 30.0
+offset_right = 151.0
+offset_bottom = 75.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Thanks for playing!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="TextureRect/Panel" unique_id=1472063790]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -262.0
+offset_top = 133.0
+offset_right = 39.0
+offset_bottom = 178.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Made by:"
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="TextureRect/Panel" unique_id=1582678365]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = -72.0
+offset_right = 217.0
+offset_bottom = -22.0
+grow_vertical = 0
+text = "Back to menu"
+
+[node name="ExitButton" type="Button" parent="TextureRect/Panel" unique_id=1889798510]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -219.0
+offset_top = -69.0
+offset_right = -19.0
+offset_bottom = -19.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Exit Game"

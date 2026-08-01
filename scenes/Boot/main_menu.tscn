@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://blq16e2uiwpus"]
+
+[ext_resource type="AudioStream" uid="uid://bgm65a3bl200c" path="res://SFX/Music/DroneVibin.ogg" id="1_65gxy"]
+[ext_resource type="Script" uid="uid://f4cy8acrup0n" path="res://scripts/main_menu.gd" id="1_y2f25"]
+
+[node name="MainMenu" type="Control" unique_id=1959358356]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y2f25")
+
+[node name="BackgroundColour" type="ColorRect" parent="." unique_id=2053524935]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.05490196, 1)
+
+[node name="TextureRect" type="ColorRect" parent="." unique_id=1367845000]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="TextureRect" unique_id=294930682]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Mind  Over Machine"
+horizontal_alignment = 1
+
+[node name="ButtonPannel" type="Panel" parent="TextureRect" unique_id=805979263]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -125.0
+offset_right = 100.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="TextureRect/ButtonPannel" unique_id=1454172594]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = 19.0
+offset_right = 50.0
+offset_bottom = 55.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "Start"
+
+[node name="ExitButton" type="Button" parent="TextureRect/ButtonPannel" unique_id=378847239]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -56.0
+offset_right = 50.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "Exit"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2012171993]
+position = Vector2(572, 320)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1937414148]
+stream = ExtResource("1_65gxy")
+autoplay = true
+parameters/looping = true

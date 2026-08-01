@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://dpuu5nam5mnju"]
+
+[ext_resource type="Script" uid="uid://bthp8ffjqx2p" path="res://scripts/epilogue_scene.gd" id="1_uuia0"]
+[ext_resource type="Script" uid="uid://b4v35mxawei6w" path="res://Resource/VNScene.gd" id="2_i2mpl"]
+[ext_resource type="Resource" uid="uid://da1mpvgfv24il" path="res://Resource/1.tres" id="3_c661o"]
+[ext_resource type="Resource" uid="uid://bx8nvb78ggjl1" path="res://Resource/2.tres" id="4_w5pab"]
+
+[node name="EpilogueScene" type="Control" unique_id=2053645891]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uuia0")
+scenes = Array[ExtResource("2_i2mpl")]([ExtResource("3_c661o"), ExtResource("4_w5pab")])
+
+[node name="BackGround" type="TextureRect" parent="." unique_id=1633089464]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextBox" type="Panel" parent="." unique_id=1850701971]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 43.0
+offset_top = -125.0
+offset_right = 543.0
+offset_bottom = 125.0
+grow_vertical = 2
+
+[node name="SpeakerLabel" type="Label" parent="TextBox" unique_id=493179522]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 3.0
+offset_right = 116.0
+offset_bottom = 37.0
+theme_override_font_sizes/font_size = 24
+text = "Speaker"
+
+[node name="TextLabel" type="RichTextLabel" parent="TextBox" unique_id=1685029862]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 40.0
+offset_right = -20.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sample text"
