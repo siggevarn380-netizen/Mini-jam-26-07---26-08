@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dep8jb0h4ur6u"]
+
+[ext_resource type="Script" uid="uid://c8lkd6o8tlk1x" path="res://drone_spawner.gd" id="1_nin3t"]
+[ext_resource type="Script" uid="uid://b8q18dujfxq3t" path="res://scripts/Enemies/drone_entries.gd" id="2_ir2n2"]
+[ext_resource type="PackedScene" uid="uid://b13hogkw18sou" path="res://scenes/chaser_drone.tscn" id="3_cxx1b"]
+[ext_resource type="PackedScene" uid="uid://cvea4717m8ksv" path="res://scenes/pew_pew_drone.tscn" id="4_bbikm"]
+
+[sub_resource type="Resource" id="Resource_5wrd5"]
+script = ExtResource("2_ir2n2")
+scene = ExtResource("3_cxx1b")
+common = 2.0
+metadata/_custom_type_script = "uid://b8q18dujfxq3t"
+
+[sub_resource type="Resource" id="Resource_jyu1j"]
+script = ExtResource("2_ir2n2")
+scene = ExtResource("4_bbikm")
+metadata/_custom_type_script = "uid://b8q18dujfxq3t"
+
+[node name="drone_spawner" type="Marker2D" unique_id=445609616]
+position = Vector2(577, 314)
+script = ExtResource("1_nin3t")
+drone_list = Array[ExtResource("2_ir2n2")]([SubResource("Resource_5wrd5"), SubResource("Resource_jyu1j")])

@@ -36,10 +36,11 @@ func _on_player_take_damage(amount: int) -> void:
 		print(health, " lives remaining.")
 		invulnerable_timer = invulnerable_time
 
-func _on_health_add(amount: int):
+func update_health_bar():
+	update_health.emit(health, max_health)
+
+
+func _on_player_gain_heart(amount: int) -> void:
 	health += amount
 	update_health_bar()
 	print(health, " lives remaining.")
-
-func update_health_bar():
-	update_health.emit(health, max_health)

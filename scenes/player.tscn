@@ -11,7 +11,7 @@
 radius = 82.67
 
 [node name="Player" type="CharacterBody2D" unique_id=986072940 node_paths=PackedStringArray("power") groups=["Player"]]
-collision_mask = 6
+collision_mask = 38
 script = ExtResource("1_g2els")
 power = NodePath("PowerCenter")
 
@@ -31,8 +31,8 @@ gravity_point_unit_distance = 1.0
 script = ExtResource("3_qhqgy")
 rShape = NodePath("CollisionShape2D")
 sprite = NodePath("Sprite2D")
-start_size = 100.0
-start_max = 1000.0
+start_size = 10.0
+start_max = 40.0
 strength = 80000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PowerCenter" unique_id=1687828294]
@@ -48,5 +48,6 @@ texture = ExtResource("1_3vyb7")
 script = ExtResource("4_dqkch")
 starting_health = 2
 
+[connection signal="gain_heart" from="." to="PlayerHealth" method="_on_player_gain_heart"]
 [connection signal="take_damage" from="." to="PlayerHealth" method="_on_player_take_damage"]
 [connection signal="death" from="PlayerHealth" to="." method="_on_player_health_death"]

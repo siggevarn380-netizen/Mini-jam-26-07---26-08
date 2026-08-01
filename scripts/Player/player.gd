@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal take_damage
+signal gain_heart
 
 @export_group("Nodes")
 @export var power: Area2D
@@ -53,13 +54,17 @@ func _physics_process(delta: float) -> void:
 		power._apply_power(pos)
 	else:
 		power._disable_power()
-	if absf(velocity.x) >= 10.0:
-		power.moving = true
+	power.moving = absf(velocity.x) >= 10.0
+		
 
-func add_score(amount: float) -> void:
+func add_potency(amount: float) -> void:
 	PlayerData.score += amount
-	power.max_range += amount
+	power.max_size += amount
+	power_range += amount
+	print("max size: ", power.max_size, "max range: ", power_range)
 
-
+func add_heart(amount: int) -> void:
+	PlayerData.score += 10
+	gain_heart.emit(amount)
 func _on_player_health_death() -> void:
 	pass # Replace with function body.
