@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://vk17gyhr00nn"]
+[gd_scene format=3 uid="uid://dvpfggk8ijbsn"]
 
 [ext_resource type="Script" uid="uid://b7yrhqb677dfc" path="res://pew_pew_drone.gd" id="1_4mdyj"]
 [ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="2_5dr46"]

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-signal take_damage(dmg: int)
+signal take_damage
 
 @export_group("Nodes")
 @export var power: Area2D
