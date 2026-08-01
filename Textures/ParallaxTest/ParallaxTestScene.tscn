@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cjjfm888oam8u"]
+
+[ext_resource type="Texture2D" uid="uid://yw822518ucn2" path="res://Textures/ParallaxTest/Background_0.png" id="1_m6aok"]
+[ext_resource type="Texture2D" uid="uid://coq387p5likiq" path="res://Textures/ParallaxTest/Background_1.png" id="2_slxow"]
+[ext_resource type="Texture2D" uid="uid://tdbi3cwa0o87" path="res://Textures/ParallaxTest/Background_2.png" id="3_460ud"]
+[ext_resource type="Texture2D" uid="uid://1cucfc8yv468" path="res://Textures/ParallaxTest/Background_3.png" id="4_sw73t"]
+[ext_resource type="Script" uid="uid://2d8gkmgp5ma7" path="res://Textures/ParallaxTest/camera_controller.gd" id="5_4olvb"]
+
+[node name="ParallaxTestScene" type="Node2D" unique_id=1725535066]
+metadata/_edit_group_ = true
+
+[node name="Background" type="Node2D" parent="." unique_id=920840221]
+
+[node name="Parallax2D" type="Parallax2D" parent="Background" unique_id=1600203898]
+scroll_scale = Vector2(0.2, 1)
+scroll_offset = Vector2(0, -10)
+repeat_size = Vector2(1280, 0.42)
+autoscroll = Vector2(1.75, 0.44)
+repeat_times = 2
+
+[node name="Background0" type="Sprite2D" parent="Background/Parallax2D" unique_id=897703533]
+z_index = -4
+position = Vector2(640, 360)
+texture = ExtResource("1_m6aok")
+
+[node name="Parallax2D2" type="Parallax2D" parent="Background" unique_id=532974587]
+scroll_scale = Vector2(0.2, 1)
+scroll_offset = Vector2(0, -10)
+repeat_size = Vector2(1280, 0)
+repeat_times = 2
+
+[node name="Background1" type="Sprite2D" parent="Background/Parallax2D2" unique_id=121541278]
+position = Vector2(640, 360)
+texture = ExtResource("2_slxow")
+
+[node name="Parallax2D3" type="Parallax2D" parent="Background" unique_id=302449081]
+scroll_scale = Vector2(0.4, 1)
+scroll_offset = Vector2(0, -10)
+repeat_size = Vector2(1280, 0)
+repeat_times = 2
+
+[node name="Background2" type="Sprite2D" parent="Background/Parallax2D3" unique_id=1085872968]
+position = Vector2(640, 360)
+texture = ExtResource("3_460ud")
+
+[node name="Parallax2D4" type="Parallax2D" parent="Background" unique_id=794220243]
+scroll_scale = Vector2(0.5, 1)
+scroll_offset = Vector2(0, -10)
+repeat_size = Vector2(1280, 0)
+repeat_times = 2
+
+[node name="Background3" type="Sprite2D" parent="Background/Parallax2D4" unique_id=1836276211]
+position = Vector2(640, 360)
+texture = ExtResource("4_sw73t")
+
+[node name="CameraController" type="Node2D" parent="." unique_id=906563882]
+position = Vector2(640, 360)
+script = ExtResource("5_4olvb")
+speed = 300.0
+
+[node name="Camera2D" type="Camera2D" parent="CameraController" unique_id=460747241]

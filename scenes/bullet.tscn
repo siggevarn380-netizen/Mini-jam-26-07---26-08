@@ -7,10 +7,12 @@
 size = Vector2(126, 20)
 
 [node name="Bullet" type="Area2D" unique_id=1668140257]
+z_index = 1
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_y25gk")
 speed = 200.0
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=222907443]
 position = Vector2(0, -1)

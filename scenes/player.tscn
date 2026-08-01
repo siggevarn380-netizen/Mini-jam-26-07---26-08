@@ -11,7 +11,10 @@
 radius = 50.0
 
 [node name="Player" type="CharacterBody2D" unique_id=986072940 groups=["Player"]]
+z_index = 1
+collision_mask = 6
 script = ExtResource("1_g2els")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=797579843]
 texture = ExtResource("1_3vyb7")
@@ -46,6 +49,10 @@ texture = ExtResource("1_3vyb7")
 script = ExtResource("4_dqkch")
 starting_health = 5
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=685239699]
+offset = Vector2(0, -260)
+
+[connection signal="been_defeated" from="." to="PlayerHealth" method="_on_player_been_defeated"]
 [connection signal="take_damage" from="." to="PlayerHealth" method="_on_player_take_damage"]
 [connection signal="death" from="PlayerHealth" to="." method="_on_player_health_death"]
 [connection signal="got_hit" from="PlayerHealth" to="." method="_on_player_health_got_hit"]

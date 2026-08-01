@@ -32,3 +32,6 @@ func _on_health_add(amount: int):
 
 func update_health_bar():
 	update_health.emit(health, max_health)
+
+func _on_player_been_defeated() -> void:
+	health = 5

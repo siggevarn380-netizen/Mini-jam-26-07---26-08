@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal take_damage(dmg: int)
+signal been_defeated
 
 var using_powers: bool = false
 
@@ -19,6 +20,10 @@ var dash_direction = 1.0
 var is_invulnerable: bool = false
 var invulnerable_duration: float = 3
 var invulnerable_timer: float = 0 
+
+func _ready() -> void:
+	if has_node("Camera2D"):
+		$Camera2D.call_deferred("make_current")
 
 func _process(delta: float) -> void:
 	dash_timer = maxf(dash_timer - delta, 0.0)
@@ -67,7 +72,14 @@ func toggle_using_powers():
 	using_powers = !using_powers
 
 func _on_player_health_death() -> void:
-	pass # Replace with function body.
+	die()
 
 func _on_player_health_got_hit() -> void:
 	invulnerable_timer = invulnerable_duration
+
+func die():
+	# When we have the animation
+	#$AnimatedSprite2D.play("death")
+	#await $AnimatedSprite2D.animation_finished
+	
+	been_defeated.emit()
