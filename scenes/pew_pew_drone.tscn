@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cvea4717m8ksv"]
 
-[ext_resource type="Script" uid="uid://b7yrhqb677dfc" path="res://scripts/Enemies/pew_pew_drone.gd" id="1_4mdyj"]
+[ext_resource type="Script" uid="uid://b7yrhqb677dfc" path="res://backups/_pew_pew_drone.gd" id="1_4mdyj"]
 [ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="2_5dr46"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fvfy"]
