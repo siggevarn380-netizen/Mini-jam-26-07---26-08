@@ -1,17 +1,29 @@
 [gd_scene format=3 uid="uid://c0300sep5wrm4"]
 
 [ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="1_3vyb7"]
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://ohk25ephixj7" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Script" uid="uid://fsb3vtgiq83d" path="res://scripts/powercenter.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://cmk7cxhtgjwwq" path="res://scripts/player_health.gd" id="4_dqkch"]
+=======
+[ext_resource type="Script" uid="uid://ohk25ephixj7" path="res://scripts/Player/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://fsb3vtgiq83d" path="res://scripts/Player/powercenter.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://cmk7cxhtgjwwq" path="res://scripts/Player/player_health.gd" id="4_dqkch"]
+>>>>>>> legolas
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
+<<<<<<< HEAD
 radius = 82.67
 
 [node name="Player" type="CharacterBody2D" unique_id=986072940 node_paths=PackedStringArray("power") groups=["Player"]]
 collision_mask = 6
+=======
+radius = 50.0
+
+[node name="Player" type="CharacterBody2D" unique_id=986072940 groups=["Player"]]
+>>>>>>> legolas
 script = ExtResource("1_g2els")
 power = NodePath("PowerCenter")
 
@@ -50,3 +62,7 @@ starting_health = 5
 
 [connection signal="take_damage" from="." to="PlayerHealth" method="_on_player_take_damage"]
 [connection signal="death" from="PlayerHealth" to="." method="_on_player_health_death"]
+<<<<<<< HEAD
+=======
+[connection signal="got_hit" from="PlayerHealth" to="." method="_on_player_health_got_hit"]
+>>>>>>> legolas

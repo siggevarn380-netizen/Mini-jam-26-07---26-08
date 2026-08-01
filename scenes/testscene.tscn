@@ -1,7 +1,13 @@
-[gd_scene format=3 uid="uid://bahd6u56ic8y2"]
+[gd_scene format=3 uid="uid://b8x8s8x8x8x8x"]
 
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://c0300sep5wrm4" path="res://scenes/player.tscn" id="2_r32pp"]
 [ext_resource type="PackedScene" uid="uid://bxre2vwu1pyyo" path="res://scenes/chaser_drone.tscn" id="3_l2n4a"]
+=======
+[ext_resource type="Script" uid="uid://f40xhl73u7mv" path="res://scripts/test_script.gd" id="1_65iv0"]
+[ext_resource type="PackedScene" uid="uid://c0300sep5wrm4" path="res://scenes/player.tscn" id="2_r32pp"]
+[ext_resource type="PackedScene" uid="uid://ctgt6u8o4kk5w" path="res://scenes/ui.tscn" id="3_l2n4a"]
+>>>>>>> legolas
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]
 size = Vector2(1174, 20)
@@ -10,6 +16,10 @@ size = Vector2(1174, 20)
 size = Vector2(14, 633)
 
 [node name="test_scene" type="Node2D" unique_id=772019489]
+<<<<<<< HEAD
+=======
+script = ExtResource("1_65iv0")
+>>>>>>> legolas
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1899305479 groups=["Static"]]
 position = Vector2(-9, 639)
@@ -32,9 +42,13 @@ shape = SubResource("RectangleShape2D_x15ge")
 [node name="Player" parent="." unique_id=986072940 instance=ExtResource("2_r32pp")]
 position = Vector2(519, 563)
 
+<<<<<<< HEAD
 [node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=492096612 groups=["Static"]]
 collision_layer = 2
 collision_mask = 5
+=======
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=492096612]
+>>>>>>> legolas
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=769059916]
 position = Vector2(-3, 306.5)
@@ -49,10 +63,14 @@ collision_mask = 5
 position = Vector2(-3, 306.5)
 shape = SubResource("RectangleShape2D_k0akp")
 
+<<<<<<< HEAD
 [node name="ChaserDrone" parent="." unique_id=821450291 instance=ExtResource("3_l2n4a")]
 position = Vector2(179, 313)
 
 [node name="ChaserDrone2" parent="." unique_id=794226470 instance=ExtResource("3_l2n4a")]
 position = Vector2(953, 247)
+=======
+[node name="UI" parent="." unique_id=1353638227 instance=ExtResource("3_l2n4a")]
+>>>>>>> legolas
 
 [editable path="Player"]

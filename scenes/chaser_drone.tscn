@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://bxre2vwu1pyyo"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://c63gwu2q3ycql" path="res://scripts/chaser_drone.gd" id="1_etm3g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cassd"]
+=======
+[ext_resource type="Script" uid="uid://c63gwu2q3ycql" path="res://scripts/Enemies/chaser_drone.gd" id="1_etm3g"]
+[ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="2_etm3g"]
+>>>>>>> legolas
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]
 
@@ -16,8 +21,13 @@ max_contacts_reported = 1
 script = ExtResource("1_etm3g")
 comp_timer = NodePath("ComposureTimer")
 
+<<<<<<< HEAD
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1536036583]
 sprite_frames = SubResource("SpriteFrames_cassd")
+=======
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1521908960]
+texture = ExtResource("2_etm3g")
+>>>>>>> legolas
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=701951204]
 scale = Vector2(6, 6)
@@ -29,3 +39,7 @@ wait_time = 3.0
 one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+<<<<<<< HEAD
+=======
+[connection signal="take_damage" from="." to="." method="_on_take_damage"]
+>>>>>>> legolas

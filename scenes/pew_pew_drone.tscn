@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cvea4717m8ksv"]
+
+[ext_resource type="Script" uid="uid://b7yrhqb677dfc" path="res://scripts/Enemies/pew_pew_drone.gd" id="1_4mdyj"]
+[ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="2_5dr46"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fvfy"]
+
+[node name="PewPewDrone" type="RigidBody2D" unique_id=743119867 node_paths=PackedStringArray("comp_timer", "fire_timer", "muzzle") groups=["Enemies"]]
+collision_layer = 4
+collision_mask = 7
+input_pickable = true
+gravity_scale = 0.0
+script = ExtResource("1_4mdyj")
+comp_timer = NodePath("ComposureTimer")
+fire_timer = NodePath("FireTimer")
+muzzle = NodePath("Muzzle")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=259625868]
+texture = ExtResource("2_5dr46")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=267791726]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_2fvfy")
+
+[node name="ComposureTimer" type="Timer" parent="." unique_id=934477120]
+process_callback = 0
+wait_time = 3.0
+one_shot = true
+
+[node name="FireTimer" type="Timer" parent="." unique_id=1447703974 groups=["Enemies"]]
+wait_time = 2.0
+autostart = true
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=415345893]
+position = Vector2(74, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="take_damage" from="." to="." method="_on_take_damage"]
+[connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]
