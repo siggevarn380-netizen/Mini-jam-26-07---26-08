@@ -10,9 +10,9 @@ func _ready() -> void:
 	video.finished.connect(_on_video_finished)
 	
 	audio.stream = track_1
-	await get_tree().create_timer(4.0).timeout
+	await get_tree().create_timer(5.13).timeout
 	audio.play()
-	await get_tree().create_timer(22.13).timeout
+	await get_tree().create_timer(24.18).timeout
 	audio.stop()
 	
 	audio.stream = track_2
