@@ -3,8 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://ohk25ephixj7" path="res://scripts/Player/player.gd" id="1_g2els"]
 [ext_resource type="Script" uid="uid://fsb3vtgiq83d" path="res://scripts/Player/powercenter.gd" id="3_qhqgy"]
+[ext_resource type="Shader" uid="uid://b2aft6226k150" path="res://scenes/Player/power_vfx.gdshader" id="4_dl1wr"]
 [ext_resource type="Script" uid="uid://cmk7cxhtgjwwq" path="res://scripts/Player/player_health.gd" id="4_dqkch"]
 [ext_resource type="AudioStream" uid="uid://mob333w5x8wu" path="res://SFX/Music/DroneMadness.ogg" id="5_uiqp4"]
+[ext_resource type="Texture2D" uid="uid://b8004epaunxr6" path="res://scenes/Player/PlayerGraphics/Power.png" id="5_wwtew"]
 [ext_resource type="PackedScene" uid="uid://02c6ttoa3lgd" path="res://scenes/Player/PlayerGraphics/MainCharacterGraphics.tscn" id="6_hvfru"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1itqp"]
@@ -13,6 +15,21 @@ height = 35.000004
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
 radius = 82.67
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sk1v2"]
+frequency = 0.0093
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k0r1g"]
+noise = SubResource("FastNoiseLite_sk1v2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xbuj7"]
+shader = ExtResource("4_dl1wr")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_k0r1g")
+shader_parameter/scroll_speed = 0.5
+shader_parameter/noise_scale = 2.0
+shader_parameter/bright_color = Color(0.65285504, 0.0020093627, 0.8516455, 1)
+shader_parameter/base_color = Color(0.82968354, 0.49092335, 0.90865207, 1)
+shader_parameter/min_brightness = 0.5
 
 [node name="Player" type="CharacterBody2D" unique_id=986072940 node_paths=PackedStringArray("power") groups=["Player"]]
 collision_mask = 102
@@ -48,7 +65,9 @@ debug_color = Color(0.8521896, 0.19326013, 0.7788795, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="PowerCenter" unique_id=735858783]
 visible = false
-texture = ExtResource("1_3vyb7")
+material = SubResource("ShaderMaterial_xbuj7")
+scale = Vector2(0.78125, 0.78125)
+texture = ExtResource("5_wwtew")
 
 [node name="PlayerHealth" type="Node2D" parent="." unique_id=707798586]
 script = ExtResource("4_dqkch")
