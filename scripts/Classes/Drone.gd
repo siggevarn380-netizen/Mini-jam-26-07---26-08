@@ -9,7 +9,7 @@ extends RigidBody2D
 # Subclasses add attacks by overriding _roll_for_action() and _on_hover_action(),
 # and may define extra states starting at State._NEXT.
 
-signal take_damage()
+signal take_damage(amount)
 
 enum State {SEEK, HOVER, DRAGGED, RELEASED, _NEXT}
 
@@ -287,7 +287,7 @@ func _on_body_entered(body: Node) -> void:
 				body.take_damage.emit(1)
 
 	if closing_speed > impact_tolerance:
-		take_damage.emit()
+		take_damage.emit(1)
 
 	if _should_retreat(body, closing_speed):
 		_enter_seek()
