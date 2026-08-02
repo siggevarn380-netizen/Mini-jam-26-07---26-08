@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 
 func _ready() -> void:
 	await get_tree().process_frame
-	health = 8
+	health = 10
 	update_health_bar()
 
 func _on_player_take_damage(amount: int) -> void:

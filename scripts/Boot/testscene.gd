@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var player_spawn_point := $PlayerSpawnPoint
 
-var player_lives: int = 1
+var player_lives: int = 3
 
 func _ready() -> void:
 	for node in get_children():
