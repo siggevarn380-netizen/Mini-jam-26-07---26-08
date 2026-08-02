@@ -12,7 +12,7 @@ func _ready() -> void:
 	audio.stream = track_1
 	await get_tree().create_timer(5.13).timeout
 	audio.play()
-	await get_tree().create_timer(24.18).timeout
+	await get_tree().create_timer(22.18).timeout
 	audio.stop()
 	
 	audio.stream = track_2
