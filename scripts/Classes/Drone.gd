@@ -195,11 +195,10 @@ func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
 		if !body.get_node("PlayerHealth").is_invulnerable:
 			body.take_damage.emit(1)
+		take_damage.emit()
 	if body.is_in_group("Enemies"):
 		if closing_speed > body.impact_tolerance:
 			body.take_damage.emit()
-	if closing_speed > impact_tolerance:
-		take_damage.emit()
 
 func _on_dragged() -> void:
 	state = State.DRAGGED
@@ -207,8 +206,6 @@ func _on_released()     -> void:
 	comp_timer.start()
 	state = State.RELEASED
 
-
-	
 func destroy():
 	set_deferred("freeze", true)
 	$CollisionShape2D.set_deferred("disabled", true)

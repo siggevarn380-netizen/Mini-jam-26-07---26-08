@@ -4,17 +4,15 @@ signal update_health(current_health: int, max_health: int)
 signal death
 signal got_hit
 
-@export var starting_health: int = 1
+@export var starting_health: int = 10
 @export var max_health: int = 10
 @export var invulnerable_time : float = 2.0
 
 var is_invulnerable = false
 var invulnerable_timer = 0.0
 
-@onready var health: int = starting_health:
-	set(modify_health):
-		health = clampi(modify_health, 0, max_health)
-		
+var health: int
+
 func _process(delta: float) -> void:
 	is_invulnerable = invulnerable_timer > 0.0
 	if is_invulnerable:
@@ -23,22 +21,21 @@ func _process(delta: float) -> void:
 
 func _ready() -> void:
 	await get_tree().process_frame
+	health = 2
 	update_health_bar()
 
 func _on_player_take_damage(amount: int) -> void:
 	health -= amount
-	update_health_bar()
 	got_hit.emit()
 	if health == 0:
 		death.emit()
-		print("Pow dead")
+		health = max_health/2
 	else: 
-		print(health, " lives remaining.")
 		invulnerable_timer = invulnerable_time
-
+	update_health_bar()
+	
 func update_health_bar():
 	update_health.emit(health, max_health)
-
 
 func _on_player_gain_heart(amount: int) -> void:
 	health += amount

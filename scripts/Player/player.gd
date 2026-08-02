@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-signal take_damage
+signal take_damage(amount: int)
 signal gain_heart
+signal been_defeated
 
 @export_group("Nodes")
 @export var power: Area2D
@@ -66,5 +67,6 @@ func add_potency(amount: float) -> void:
 func add_heart(amount: int) -> void:
 	PlayerData.score += 10
 	gain_heart.emit(amount)
+	
 func _on_player_health_death() -> void:
-	pass # Replace with function body.
+	been_defeated.emit()
