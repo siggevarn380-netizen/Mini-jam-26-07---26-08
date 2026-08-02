@@ -74,6 +74,7 @@ starting_health = 2
 
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=2015204349]
 stream = ExtResource("5_uiqp4")
+autoplay = true
 parameters/looping = true
 
 [node name="SFXs" type="AudioStreamPlayer2D" parent="." unique_id=662597450]

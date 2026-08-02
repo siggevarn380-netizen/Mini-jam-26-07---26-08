@@ -85,7 +85,6 @@ text = "Exit"
 
 [node name="PauseMenuMusic" type="AudioStreamPlayer2D" parent="." unique_id=2116041756]
 stream = ExtResource("2_ly3j3")
-autoplay = true
 parameters/looping = true
 
 [node name="MenuSFXs" type="AudioStreamPlayer2D" parent="." unique_id=1895029487]
