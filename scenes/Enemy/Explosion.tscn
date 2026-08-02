@@ -9,6 +9,7 @@ frequency = 0.0038
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_funwi"]
 noise = SubResource("FastNoiseLite_v72f4")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jrpnq"]
 shader = ExtResource("2_ti3e2")
