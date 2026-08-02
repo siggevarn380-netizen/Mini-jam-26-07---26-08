@@ -51,6 +51,10 @@ const REST_ROTATION: float = 0.0
 @export var orbit_speed: float = 1.0            # rad/s around the boss
 @export var orbit_hover_time: float = 900.0     # Replaces max_hover_time while orbiting
 @export var max_simultaneous_charges: int = 2   # Read by attacking subclasses
+@export var orbit_radius: float = 160.0   # Base ring radius when circling the boss
+@export var swarm_spread: float = 60.0   # Random radius scatter, pixels
+@export var swarm_clump: float = 0.35    # 1.0 = evenly spaced, 0.0 = all on one point
+@export var orbit_ring_spacing: float = 0.0   # Extra radius per ring while orbiting
 
 @export_group("Avoidance")
 @export var sep_radius: float = 60.0
@@ -92,12 +96,20 @@ func _ready() -> void:
 	hover_arc = minf(hover_arc, max_arc)
 	linear_damp = 0.0
 	sep_field.get_node("CollisionShape2D").shape.radius = sep_radius
+	hover_phase = randf() * TAU
 	await get_tree().process_frame   # Let the Drones group finish populating
 	_enter_seek()
 	set_physics_process(true)
 
 
 func _physics_process(delta: float) -> void:
+	# Adopt or release the boss the moment one appears or dies.
+	if state != State.DRAGGED and state != State.RELEASED:
+		var boss = get_tree().get_first_node_in_group("Boss")
+		if boss != orbit_boss and boss != self:
+			orbit_boss = boss
+			_enter_seek()
+			
 	match state:
 		State.SEEK:
 			var anchor := _anchor()
@@ -153,6 +165,10 @@ func _on_hover_action() -> void:
 func _enter_seek() -> void:
 	incapacitated = false
 	state = State.SEEK
+	var found = get_tree().get_first_node_in_group("Boss")
+	orbit_boss = found if found != self else null
+	if is_instance_valid(orbit_boss) and orbit_boss.has_method("apply_flock_settings"):
+		orbit_boss.apply_flock_settings(self)
 	if not is_instance_valid(target):
 		target = get_tree().get_first_node_in_group("Player")
 
@@ -166,11 +182,14 @@ func _enter_seek() -> void:
 			idx = 0
 		var ring := idx % ring_count
 
-		hover_dist = (target.power_range * 1.5 + ring * ring_spacing + dist_bias) * (1.0 + randf_range(-dist_jitter, dist_jitter))
+		if _anchor() == orbit_boss:
+			hover_dist = (orbit_radius + randf_range(-swarm_spread, swarm_spread))
+			hover_phase = TAU * float(idx) / float(maxi(flock.size(), 1)) * swarm_clump + randf_range(-0.3, 0.3)
+		else:
+			hover_dist = (target.power_range * 1.5 + ring * ring_spacing + dist_bias) * (1.0 + randf_range(-dist_jitter, dist_jitter))
+			hover_phase = randf() * TAU
 		my_arc = hover_arc * (1.0 + randf_range(-arc_jitter, arc_jitter))
 		my_arc = minf(my_arc, max_arc)
-		# Re-rolling the phase mid-orbit would teleport the drone around the ring.
-		if _anchor() != orbit_boss: hover_phase = randf() * TAU
 		wobble_phase = randf() * TAU
 
 	hover_time = 0.0
@@ -195,11 +214,13 @@ func _anchor() -> Node2D:
 ## Orbiting: monotonic sweep, full circle. Otherwise: triangle wave above the player.
 func _hover_angle() -> float:
 	if is_instance_valid(orbit_boss):
-		return hover_phase + hover_time * orbit_speed
+		# Global clock: re-entering SEEK can't teleport us around the ring.
+		return hover_phase + (Time.get_ticks_msec() / 1000.0) * orbit_speed
 	var t := fmod(hover_time * hover_freq + hover_phase, TAU) / TAU
 	var tri := 4.0 * absf(t - 0.5) - 1.0
 	var wobble := sin(hover_time * wobble_freq + wobble_phase) * wobble_amp
 	return -PI / 2.0 + tri * my_arc + wobble
+	
 
 
 # ------------------------------------------------------------- Steering
@@ -327,6 +348,7 @@ func _on_released() -> void:
 
 
 func destroy():
+	remove_from_group("Drones")
 	set_deferred("freeze", true)
 	$CollisionShape2D.set_deferred("disabled", true)
 	hide()

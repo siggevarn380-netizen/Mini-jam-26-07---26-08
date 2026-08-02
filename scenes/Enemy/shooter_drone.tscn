@@ -1,18 +1,19 @@
 [gd_scene format=3 uid="uid://dah763nngrhv0"]
 
-[ext_resource type="Script" uid="uid://dvwkmnj5uk4qt" path="res://scripts/Enemies/shooter_drone.gd" id="1_gwof2"]
-[ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="2_kqdat"]
-[ext_resource type="AudioStream" uid="uid://cucx0e5asww1o" path="res://SFX/DroneLaser1.wav" id="3_kqdat"]
-[ext_resource type="Texture2D" uid="uid://dxuyw2ntotuc2" path="res://scenes/Enemy/EnemyGraphics/BeeDrones.png" id="4_4l1l8"]
+[ext_resource type="Script" uid="uid://dvwkmnj5uk4qt" path="res://scripts/Enemies/shooter_drone.gd" id="1_e00ho"]
+[ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="2_8lqya"]
+[ext_resource type="AudioStream" uid="uid://cucx0e5asww1o" path="res://SFX/DroneLaser1.wav" id="3_8ldhi"]
+[ext_resource type="Texture2D" uid="uid://dxuyw2ntotuc2" path="res://scenes/Enemy/EnemyGraphics/BeeDrones.png" id="4_4q3cc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_etm3g"]
 friction = 0.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]
-size = Vector2(5, 5)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mg28n"]
+radius = 1.4031029
+height = 6.8589807
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cassd"]
-radius = 64.12
+radius = 30.0
 
 [node name="shooter_drone" type="RigidBody2D" unique_id=821450291 node_paths=PackedStringArray("fire_timer", "muzzle", "sep_field", "comp_timer") groups=["Drones", "Enemies"]]
 collision_layer = 4
@@ -22,21 +23,24 @@ physics_material_override = SubResource("PhysicsMaterial_etm3g")
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 1
-script = ExtResource("1_gwof2")
+script = ExtResource("1_e00ho")
 fire_timer = NodePath("FireTimer")
 muzzle = NodePath("Muzzle")
 sep_field = NodePath("SeparationField")
 comp_timer = NodePath("ComposureTimer")
 dist_bias = 300.0
+sep_radius = 30.0
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1521908960]
 visible = false
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_kqdat")
+texture = ExtResource("2_8lqya")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=701951204]
+position = Vector2(4, -2)
+rotation = 0.87266463
 scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_x15ge")
+shape = SubResource("CapsuleShape2D_mg28n")
 debug_color = Color(0.061795115, 0.6345884, 0.41156435, 0.41960785)
 
 [node name="ComposureTimer" type="Timer" parent="." unique_id=991341170]
@@ -59,12 +63,13 @@ wait_time = 2.0
 position = Vector2(0, 20)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=793300656]
-stream = ExtResource("3_kqdat")
+stream = ExtResource("3_8ldhi")
 
 [node name="BeeDrones" type="Sprite2D" parent="." unique_id=1135058819]
+position = Vector2(0, -8)
 rotation = -1.5707964
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("4_4l1l8")
+texture = ExtResource("4_4q3cc")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="take_damage" from="." to="." method="_on_take_damage"]
