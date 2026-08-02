@@ -2,9 +2,26 @@
 
 [ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="1_mkf8s"]
 [ext_resource type="Script" uid="uid://64xc47xxcq77" path="res://scripts/Enemies/bullet.gd" id="1_y25gk"]
+[ext_resource type="Shader" uid="uid://r55drk3jnaiy" path="res://scenes/Enemy/bullet.gdshader" id="3_xbuj7"]
+[ext_resource type="Texture2D" uid="uid://de5adb4krekf0" path="res://scenes/Enemy/EnemyGraphics/Bullet.png" id="4_k0r1g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]
 size = Vector2(126, 20)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_k0r1g"]
+frequency = 0.0087
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xbuj7"]
+noise = SubResource("FastNoiseLite_k0r1g")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uvytn"]
+shader = ExtResource("3_xbuj7")
+shader_parameter/base_color = Color(0.15257964, 0.6207341, 0.8858075, 1)
+shader_parameter/wave_color = Color(0.41811687, 0.9999998, 0.9669122, 1)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_xbuj7")
+shader_parameter/wave_speed = 15.0
+shader_parameter/wave_amplitude = 0.0
+shader_parameter/noise_scale = 1.0
 
 [node name="Bullet" type="Area2D" unique_id=1668140257 groups=["Projectiles"]]
 collision_layer = 64
@@ -13,6 +30,7 @@ script = ExtResource("1_y25gk")
 speed = 200.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=222907443]
+visible = false
 position = Vector2(0, -1)
 scale = Vector2(1, 0.171875)
 texture = ExtResource("1_mkf8s")
@@ -20,5 +38,11 @@ texture = ExtResource("1_mkf8s")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1121522593]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_x15ge")
+
+[node name="Bullet" type="Sprite2D" parent="." unique_id=1537713938]
+material = SubResource("ShaderMaterial_uvytn")
+position = Vector2(-10, -3)
+scale = Vector2(0.6545454, 0.375)
+texture = ExtResource("4_k0r1g")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
