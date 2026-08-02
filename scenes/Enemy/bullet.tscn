@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="1_mkf8s"]
 [ext_resource type="Script" uid="uid://64xc47xxcq77" path="res://scripts/Enemies/bullet.gd" id="1_y25gk"]
-[ext_resource type="Shader" uid="uid://r55drk3jnaiy" path="res://scenes/Enemy/bullet.gdshader" id="3_xbuj7"]
+[ext_resource type="Shader" uid="uid://r55drk3jnaiy" path="res://scenes/Enemy/EnemyGraphics/bullet.gdshader" id="3_xbuj7"]
 [ext_resource type="Texture2D" uid="uid://de5adb4krekf0" path="res://scenes/Enemy/EnemyGraphics/Bullet.png" id="4_k0r1g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]

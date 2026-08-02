@@ -26,10 +26,10 @@ noise = SubResource("FastNoiseLite_sk1v2")
 shader = ExtResource("4_dl1wr")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_k0r1g")
 shader_parameter/scroll_speed = 0.5
-shader_parameter/noise_scale = 2.0
+shader_parameter/noise_scale = 2.4710001141126203
 shader_parameter/bright_color = Color(0.65285504, 0.0020093627, 0.8516455, 1)
 shader_parameter/base_color = Color(0.82968354, 0.49092335, 0.90865207, 1)
-shader_parameter/min_brightness = 0.5
+shader_parameter/min_brightness = 0.8490000403275
 
 [node name="Player" type="CharacterBody2D" unique_id=986072940 node_paths=PackedStringArray("power") groups=["Player"]]
 collision_mask = 102
