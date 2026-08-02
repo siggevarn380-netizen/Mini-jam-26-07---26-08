@@ -9,6 +9,7 @@ func _ready() -> void:
 	for node in get_children():
 		if node.is_in_group("Player"):
 			node.been_defeated.connect(self._respawn_player)
+			node.victory.connect(self._player_victory)
 			var health_node = node.get_node("PlayerHealth")
 			health_node.update_health.connect($UI.update_health_UI)
 		if node.is_in_group("Enemies"):
@@ -27,3 +28,6 @@ func _respawn_player():
 func _update_score_UI(amount: int):
 	player_score += amount
 	$UI/ScoreUI/ScoreValues.text = str(player_score)
+
+func _player_victory():
+	SceneManager.goto_scene("res://scenes/Boot/epilogue_scene.tscn")
