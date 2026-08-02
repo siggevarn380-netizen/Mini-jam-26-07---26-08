@@ -313,6 +313,7 @@ func _on_body_entered(body: Node) -> void:
 
 	if closing_speed > impact_tolerance:
 		take_damage.emit(1)
+			
 
 	if _should_retreat(body, closing_speed):
 		_enter_seek()

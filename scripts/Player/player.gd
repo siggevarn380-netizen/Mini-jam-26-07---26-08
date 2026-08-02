@@ -99,7 +99,6 @@ func add_heart(amount: int) -> void:
 	
 func _on_player_health_death() -> void:
 	been_defeated.emit()
-	graphics.die()
 
 func pick_up_item():
 	$SFXs.stream = track_1
