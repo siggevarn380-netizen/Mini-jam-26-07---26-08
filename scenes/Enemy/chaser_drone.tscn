@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c63gwu2q3ycql" path="res://scripts/Enemies/chaser_drone.gd" id="1_w207v"]
 [ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="2_ltouy"]
+[ext_resource type="Texture2D" uid="uid://cpxieeggbo24g" path="res://scenes/Enemy/EnemyGraphics/DragonflyBody.png" id="3_k5usy"]
+[ext_resource type="Shader" uid="uid://kwa7kmry2sex" path="res://scenes/Enemy/EnemyGraphics/chaser_drone_wing_flash.gdshader" id="4_oc3pf"]
+[ext_resource type="Texture2D" uid="uid://lejiwcyet08g" path="res://scenes/Enemy/EnemyGraphics/DragonflyWings.png" id="4_tncsd"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_etm3g"]
 friction = 0.0
@@ -11,6 +14,12 @@ size = Vector2(5, 5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cassd"]
 radius = 64.12
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oc3pf"]
+shader = ExtResource("4_oc3pf")
+shader_parameter/flash_color = Color(0.8819696, 0.27269962, 0.24195662, 1)
+shader_parameter/flash_speed = 10.63600050521
+shader_parameter/is_flashing = false
 
 [node name="ChaserDrone" type="RigidBody2D" unique_id=821450291 node_paths=PackedStringArray("sep_field", "comp_timer") groups=["Drones", "Enemies", "Explosive"]]
 collision_layer = 4
@@ -28,6 +37,7 @@ impact_tolerance = 300.0
 enemy_layer_mask = 16
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1521908960]
+visible = false
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_ltouy")
 
@@ -49,6 +59,15 @@ shape = SubResource("CircleShape2D_cassd")
 debug_color = Color(0.6570752, 0.51661456, 0, 0.41960785)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=750580500]
+
+[node name="DragonflyBody" type="Sprite2D" parent="." unique_id=863370327]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_k5usy")
+
+[node name="DragonflyWings" type="Sprite2D" parent="." unique_id=329029559]
+material = SubResource("ShaderMaterial_oc3pf")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_tncsd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="take_damage" from="." to="." method="_on_take_damage"]
