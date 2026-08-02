@@ -69,7 +69,7 @@ bone2d_node = NodePath("Hip/Chest/Skull")
 target_nodepath = NodePath("../../IkTargets/HeadLookAt")
 enable_constraint = true
 constraint_angle_min = -334.9028
-constraint_angle_max = -27.97698
+constraint_angle_max = -27.976978
 constraint_angle_invert = true
 constraint_in_localspace = true
 
@@ -1771,29 +1771,31 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w7m34"]
-switch_mode = 1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kynsr"]
-switch_mode = 1
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r3qys"]
 switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ypm83"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_blsaa"]
-advance_mode = 2
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kynsr"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w7m34"]
+switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lbf6l"]
+switch_mode = 1
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_blsaa"]
+switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_i5que"]
 states/Damage/node = SubResource("AnimationNodeAnimation_t1ija")
-states/Damage/position = Vector2(195.70587, -101.76469)
+states/Damage/position = Vector2(98.058815, 82.941185)
 states/Dash/node = SubResource("AnimationNodeAnimation_tgyic")
-states/Dash/position = Vector2(467.47058, -107.64703)
+states/Dash/position = Vector2(188.37029, -48.823486)
 states/Death/node = SubResource("AnimationNodeAnimation_jhw5j")
 states/Death/position = Vector2(649.8234, -32.059822)
 states/End/position = Vector2(795.2941, 35.570953)
@@ -1806,8 +1808,8 @@ states/Stationary/node = SubResource("AnimationNodeAnimation_wrl5u")
 states/Stationary/position = Vector2(334.9412, 31.536766)
 states/WalkRun_Blendspace1/node = ExtResource("26_wpvuy")
 states/WalkRun_Blendspace1/position = Vector2(325.647, 140.1765)
-transitions = ["Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_5qwke"), "Stationary", "WalkRun_Blendspace1", SubResource("AnimationNodeStateMachineTransition_tgyic"), "WalkRun_Blendspace1", "Jump", SubResource("AnimationNodeStateMachineTransition_jhw5j"), "Start", "Stationary", SubResource("AnimationNodeStateMachineTransition_wrl5u"), "Fall", "Stationary", SubResource("AnimationNodeStateMachineTransition_dg54b"), "Stationary", "Damage", SubResource("AnimationNodeStateMachineTransition_w7m34"), "Stationary", "Dash", SubResource("AnimationNodeStateMachineTransition_kynsr"), "Stationary", "Death", SubResource("AnimationNodeStateMachineTransition_r3qys"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_ypm83"), "Dash", "Stationary", SubResource("AnimationNodeStateMachineTransition_blsaa"), "Damage", "Stationary", SubResource("AnimationNodeStateMachineTransition_lbf6l")]
-graph_offset = Vector2(-76, -133)
+transitions = ["Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_5qwke"), "Stationary", "WalkRun_Blendspace1", SubResource("AnimationNodeStateMachineTransition_tgyic"), "WalkRun_Blendspace1", "Jump", SubResource("AnimationNodeStateMachineTransition_jhw5j"), "Start", "Stationary", SubResource("AnimationNodeStateMachineTransition_wrl5u"), "Fall", "Stationary", SubResource("AnimationNodeStateMachineTransition_dg54b"), "Stationary", "Death", SubResource("AnimationNodeStateMachineTransition_r3qys"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_ypm83"), "WalkRun_Blendspace1", "Dash", SubResource("AnimationNodeStateMachineTransition_kynsr"), "WalkRun_Blendspace1", "Damage", SubResource("AnimationNodeStateMachineTransition_w7m34"), "Damage", "Stationary", SubResource("AnimationNodeStateMachineTransition_lbf6l"), "Dash", "Stationary", SubResource("AnimationNodeStateMachineTransition_blsaa")]
+graph_offset = Vector2(-132, -164)
 
 [node name="Graphics" type="Node2D" unique_id=1313205762]
 script = ExtResource("1_w7m34")
@@ -1815,79 +1817,79 @@ script = ExtResource("1_w7m34")
 [node name="Sprites" type="Node2D" parent="." unique_id=568533682]
 
 [node name="ShoulderBack" type="Sprite2D" parent="Sprites" unique_id=210075171]
-position = Vector2(-11.2751665, -344.4335)
-rotation = 0.05620696
-scale = Vector2(0.9998215, 0.9998215)
+position = Vector2(-9.026779, -323.5531)
+rotation = -0.28611997
+scale = Vector2(0.99980354, 0.99980354)
 texture = ExtResource("2_kynsr")
 offset = Vector2(-1, 27)
 
 [node name="HandBack" type="Sprite2D" parent="Sprites" unique_id=2048475376]
-position = Vector2(-21.842796, -222.57051)
-rotation = -0.02023456
-scale = Vector2(0.9996685, 0.9996685)
+position = Vector2(21.92517, -205.21582)
+rotation = -0.36256143
+scale = Vector2(0.99965054, 0.99965054)
 texture = ExtResource("3_r3qys")
 offset = Vector2(2, 11)
 
 [node name="ArmBack" type="Sprite2D" parent="Sprites" unique_id=1904830372]
-position = Vector2(-16.978697, -278.66183)
-rotation = -0.02023456
-scale = Vector2(0.9996685, 0.9996685)
+position = Vector2(7.678562, -259.68433)
+rotation = -0.36256143
+scale = Vector2(0.99965054, 0.99965054)
 texture = ExtResource("4_ypm83")
 offset = Vector2(4, 23)
 
 [node name="FootBack" type="Sprite2D" parent="Sprites" unique_id=746953911]
-position = Vector2(25.867954, -40.749176)
-rotation = -0.059406467
-scale = Vector2(0.99949557, 0.99949557)
+position = Vector2(-28.31852, -21.54309)
+rotation = 0.247512
+scale = Vector2(0.999487, 0.999487)
 texture = ExtResource("5_blsaa")
 offset = Vector2(-14.5, 11)
 
 [node name="CalfBack" type="Sprite2D" parent="Sprites" unique_id=250393380]
-position = Vector2(13.809738, -143.01117)
-rotation = -0.1270814
-scale = Vector2(0.99966615, 0.99966615)
+position = Vector2(-8.273443, -122.54218)
+rotation = 0.18621351
+scale = Vector2(0.9996522, 0.9996522)
 texture = ExtResource("6_lbf6l")
 offset = Vector2(4, 48)
 
 [node name="ThighBack" type="Sprite2D" parent="Sprites" unique_id=255151504]
-position = Vector2(2.9339762, -220.24222)
-rotation = -0.12708138
-scale = Vector2(0.9998287, 0.9998287)
+position = Vector2(5.1821074, -199.36407)
+rotation = 0.1862135
+scale = Vector2(0.9998073, 0.9998073)
 texture = ExtResource("7_n5web")
 offset = Vector2(-3, 32)
 
 [node name="FootFront" type="Sprite2D" parent="Sprites" unique_id=1724898380]
-position = Vector2(17.75859, -78.326675)
-rotation = -0.80115247
-scale = Vector2(0.99951607, 0.99951607)
+position = Vector2(92.9963, -67.3179)
+rotation = -0.9526791
+scale = Vector2(0.99950355, 0.99950355)
 texture = ExtResource("8_q7dy5")
 offset = Vector2(-14.5, 11)
 
 [node name="CalfFront" type="Sprite2D" parent="Sprites" unique_id=837212924]
-position = Vector2(-45.795807, -159.34601)
-rotation = -0.67488617
-scale = Vector2(0.9996839, 0.9996839)
+position = Vector2(5.3535476, -121.371956)
+rotation = -1.0278568
+scale = Vector2(0.99967444, 0.99967444)
 texture = ExtResource("9_mhfce")
 offset = Vector2(4, 48)
 
 [node name="ThighFront" type="Sprite2D" parent="Sprites" unique_id=479239704]
-position = Vector2(2.9339762, -220.24222)
-rotation = 0.687689
-scale = Vector2(0.9998307, 0.9998307)
+position = Vector2(5.1821074, -199.36407)
+rotation = 0.010621642
+scale = Vector2(0.99981916, 0.99981916)
 texture = ExtResource("10_4unpv")
 offset = Vector2(-3, 32)
 
 [node name="Loop" type="Sprite2D" parent="Sprites" unique_id=1528117588]
-position = Vector2(2.3652048, -241.32915)
+position = Vector2(4.6133466, -220.45062)
 rotation = -0.121917866
-scale = Vector2(0.9999798, 0.9999798)
+scale = Vector2(0.9999616, 0.9999616)
 texture = ExtResource("11_e8iu6")
 offset = Vector2(2, 24)
 
 [node name="Hips" type="Node2D" parent="Sprites" unique_id=1142878479]
-position = Vector2(-7.297492, -246.18997)
+position = Vector2(-5.049174, -225.31136)
 rotation = -0.121917866
-scale = Vector2(0.9999798, 0.9999798)
+scale = Vector2(0.9999616, 0.9999616)
 
 [node name="Hips2" type="Node2D" parent="Sprites/Hips" unique_id=714874706]
 position = Vector2(-6, -241)
@@ -1901,16 +1903,16 @@ position = Vector2(6, 216)
 texture = ExtResource("13_mwa02")
 
 [node name="Chest" type="Sprite2D" parent="Sprites" unique_id=516105971]
-position = Vector2(-20.227829, -335.2769)
+position = Vector2(-17.979279, -314.39667)
 rotation = -0.121917866
-scale = Vector2(0.9999798, 0.9999798)
+scale = Vector2(0.9999616, 0.9999616)
 texture = ExtResource("14_kpuks")
 offset = Vector2(-1, 6)
 
 [node name="Skulls" type="Node2D" parent="Sprites" unique_id=527678184]
-position = Vector2(-29.097265, -372.97247)
-rotation = 0.052358627
-scale = Vector2(0.9998151, 0.9998151)
+position = Vector2(-26.848568, -352.0915)
+rotation = 0.05237676
+scale = Vector2(0.99979836, 0.99979836)
 
 [node name="Skulls2" type="Node2D" parent="Sprites/Skulls" unique_id=850554816]
 position = Vector2(19.289692, 369.64258)
@@ -1928,44 +1930,44 @@ position = Vector2(-18.644402, -388.7212)
 texture = ExtResource("16_wtd3c")
 
 [node name="LongHair1" type="Sprite2D" parent="Sprites" unique_id=1027872938]
-position = Vector2(0.69057083, -406.45294)
-rotation = -0.17452122
-scale = Vector2(0.99964476, 0.99964476)
+position = Vector2(2.9393768, -385.57086)
+rotation = -0.2156978
+scale = Vector2(0.99963415, 0.99963415)
 texture = ExtResource("17_4tiaw")
 offset = Vector2(21, 51)
 
 [node name="LongHair2" type="Sprite2D" parent="Sprites" unique_id=424889803]
-position = Vector2(-2.77569, -397.62393)
-rotation = -0.15271038
-scale = Vector2(0.99964744, 0.99964744)
+position = Vector2(-0.526989, -376.74203)
+rotation = -0.19487645
+scale = Vector2(0.99962914, 0.99962914)
 texture = ExtResource("18_4c1bv")
 offset = Vector2(23, 52)
 
 [node name="LongHair3" type="Sprite2D" parent="Sprites" unique_id=1884460154]
-position = Vector2(-10.288055, -388.00574)
-rotation = -0.16647898
-scale = Vector2(0.9996463, 0.9996463)
+position = Vector2(-8.039402, -367.12418)
+rotation = -0.21524084
+scale = Vector2(0.99962825, 0.99962825)
 texture = ExtResource("19_f83ft")
 offset = Vector2(15, 53)
 
 [node name="SkullTop" type="Sprite2D" parent="Sprites" unique_id=1832699627]
-position = Vector2(-29.097265, -372.97247)
-rotation = 0.052358627
-scale = Vector2(0.9998151, 0.9998151)
+position = Vector2(-26.848568, -352.0915)
+rotation = 0.05237676
+scale = Vector2(0.99979836, 0.99979836)
 texture = ExtResource("20_743nl")
 offset = Vector2(7, -27)
 
 [node name="Fringe" type="Sprite2D" parent="Sprites" unique_id=841392461]
-position = Vector2(-42.348, -415.61374)
-rotation = 0.6279513
-scale = Vector2(0.9996567, 0.9996567)
+position = Vector2(-40.098305, -394.73227)
+rotation = 0.77853084
+scale = Vector2(0.99964106, 0.99964106)
 texture = ExtResource("21_ov41h")
 offset = Vector2(-5, 7)
 
 [node name="HandFront" type="Node2D" parent="Sprites" unique_id=1828854033]
-position = Vector2(14.686507, -224.89984)
-rotation = -0.32059786
-scale = Vector2(0.9996694, 0.9996694)
+position = Vector2(-16.311172, -201.45187)
+rotation = -0.047140095
+scale = Vector2(0.99965125, 0.99965125)
 
 [node name="HandFront2" type="Node2D" parent="Sprites/HandFront" unique_id=1464564743]
 position = Vector2(4, -95)
@@ -1980,16 +1982,16 @@ position = Vector2(-4, 106)
 texture = ExtResource("23_aqj8x")
 
 [node name="ShoulderFront" type="Sprite2D" parent="Sprites" unique_id=355886430]
-position = Vector2(-11.2751665, -344.4335)
-rotation = -0.2441699
-scale = Vector2(0.9998229, 0.9998229)
+position = Vector2(-9.026779, -323.5531)
+rotation = 0.029287841
+scale = Vector2(0.9998053, 0.9998053)
 texture = ExtResource("24_gmet6")
 offset = Vector2(0, 27)
 
 [node name="ArmFront" type="Sprite2D" parent="Sprites" unique_id=389521811]
-position = Vector2(2.737237, -279.9191)
-rotation = -0.32059786
-scale = Vector2(0.9996694, 0.9996694)
+position = Vector2(-12.957876, -257.6528)
+rotation = -0.047140095
+scale = Vector2(0.99965125, 0.99965125)
 texture = ExtResource("25_gl736")
 offset = Vector2(4, 23)
 
@@ -2001,7 +2003,7 @@ modification_stack = SubResource("SkeletonModificationStack2D_mgmeu")
 
 [node name="Hip" type="Bone2D" parent="Skeleton/Skeleton2D" unique_id=1088255252]
 position = Vector2(-6, -241)
-scale = Vector2(0.9999798, 0.9999798)
+scale = Vector2(0.9999616, 0.9999616)
 rest = Transform2D(1, 0, 0, 1, -6, -241)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton/Skeleton2D/Hip" unique_id=555932269]
@@ -2017,7 +2019,7 @@ remote_path = NodePath("../../../../../Sprites/Chest")
 
 [node name="Skull" type="Bone2D" parent="Skeleton/Skeleton2D/Hip/Chest" unique_id=1691544314]
 position = Vector2(-8, -34)
-rotation = 0.17427675
+rotation = 0.17427674
 scale = Vector2(0.9998354, 0.9998354)
 rest = Transform2D(0.99906516, -0.043000184, 0.043000184, 0.99906516, -8, -34)
 auto_calculate_length_and_angle = false
@@ -2049,7 +2051,7 @@ remote_path = NodePath("../../../../../../../Sprites/Fringe")
 [node name="Hair1" type="Bone2D" parent="Skeleton/Skeleton2D/Hip/Chest/Skull" unique_id=180279539]
 position = Vector2(31, -34)
 rotation = -0.14059608
-scale = Vector2(0.999828, 0.999828)
+scale = Vector2(0.9998279, 0.9998279)
 rest = Transform2D(0.99986523, 0.011386307, -0.011386307, 0.99986523, 31, -34)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -2224,7 +2226,7 @@ remote_path = NodePath("../../../../../../Sprites/CalfBack")
 [node name="FootBack" type="Bone2D" parent="Skeleton/Skeleton2D/Hip/ThighBack/CalfBack" unique_id=879354241]
 position = Vector2(-1, 103)
 rotation = 0.04202068
-scale = Vector2(0.9998304, 0.9998304)
+scale = Vector2(0.9998305, 0.9998305)
 rest = Transform2D(1, 0, 0, 1, -1, 103)
 auto_calculate_length_and_angle = false
 length = 34.12
