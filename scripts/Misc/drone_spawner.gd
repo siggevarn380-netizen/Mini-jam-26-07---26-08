@@ -31,6 +31,6 @@ func spawn_drone() -> void:
 func spawn_at(scene: PackedScene, pos: Vector2) -> Node:
 	if scene == null: return null
 	var drone = scene.instantiate()
-	get_tree().current_scene.add_child.call_deferred(drone)
+	get_tree().current_scene.call_deferred("add_child", drone)
 	drone.global_position = pos
 	return drone

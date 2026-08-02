@@ -1,11 +1,8 @@
 [gd_resource type="Resource" script_class="VNScene" format=3 uid="uid://da1mpvgfv24il"]
 
-[ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="1_a577b"]
 [ext_resource type="Script" uid="uid://b4v35mxawei6w" path="res://Resource/VNScene.gd" id="1_ntkpv"]
 
 [resource]
 script = ExtResource("1_ntkpv")
-background = ExtResource("1_a577b")
-speaker_name = "Narrator 1"
-text = "Hello "
+text = "The world is free from the drones. Thank you ranger!!!"
 metadata/_custom_type_script = "uid://b4v35mxawei6w"

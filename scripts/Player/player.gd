@@ -104,3 +104,6 @@ func _on_player_health_death() -> void:
 func pick_up_item():
 	$SFXs.stream = track_1
 	$SFXs.play()
+
+func _spawn_next_swarn():
+	pass

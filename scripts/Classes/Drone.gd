@@ -56,6 +56,7 @@ const REST_ROTATION: float = 0.0
 @export var swarm_spread: float = 60.0   # Random radius scatter, pixels
 @export var swarm_clump: float = 0.35    # 1.0 = evenly spaced, 0.0 = all on one point
 @export var orbit_ring_spacing: float = 0.0   # Extra radius per ring while orbiting
+@export var boss_immune: bool = true      # If true, never auto-joins the boss's orbit
 
 @export_group("Avoidance")
 @export var sep_radius: float = 60.0
@@ -71,7 +72,6 @@ const REST_ROTATION: float = 0.0
 @export_group("Unused")
 @export var max_hover_dist: float = 2000.0   # Kept for compatibility, never read
 
-@export var boss_immune: bool = false
 
 # ---------------------------------------------------------------- Runtime
 
@@ -93,6 +93,8 @@ var roll_timer: float = 0.0
 
 
 func _ready() -> void:
+	if not is_in_group("Drones"):
+		add_to_group("Drones")
 	set_physics_process(false)
 	gravity_scale = 0.0
 	hover_arc = minf(hover_arc, max_arc)
@@ -100,8 +102,6 @@ func _ready() -> void:
 	sep_field.get_node("CollisionShape2D").shape.radius = sep_radius
 	hover_phase = randf() * TAU
 	await get_tree().process_frame   # Let the Drones group finish populating
-	if not is_inside_tree():
-		return
 	_enter_seek()
 	set_physics_process(true)
 
@@ -114,7 +114,7 @@ func _physics_process(delta: float) -> void:
 			if boss != orbit_boss and boss != self:
 				orbit_boss = boss
 				_enter_seek()
-			
+
 	match state:
 		State.SEEK:
 			var anchor := _anchor()
@@ -168,7 +168,6 @@ func _on_hover_action() -> void:
 # --------------------------------------------------------- State entry
 
 func _enter_seek() -> void:
-	if not is_inside_tree(): return
 	incapacitated = false
 	state = State.SEEK
 	if not boss_immune:
@@ -204,31 +203,6 @@ func _enter_seek() -> void:
 	hover_time = 0.0
 	linear_damp = 0.0
 	seek_elapsed = 0.0
-	if is_instance_valid(target):
-		# Ring assignment comes from position in the Drones group, so the
-		# flock spreads across rings without any central coordinator.
-		var flock := get_tree().get_nodes_in_group("Drones")
-		var idx := flock.find(self)
-		if idx < 0:
-			push_warning("%s not in Drones group" % name)
-			idx = 0
-		var ring := idx % ring_count
-
-		if _anchor() == orbit_boss:
-			hover_dist = (orbit_radius + randf_range(-swarm_spread, swarm_spread))
-			hover_phase = TAU * float(idx) / float(maxi(flock.size(), 1)) * swarm_clump + randf_range(-0.3, 0.3)
-		else:
-			hover_dist = (target.power_range * 1.5 + ring * ring_spacing + dist_bias) * (1.0 + randf_range(-dist_jitter, dist_jitter))
-			hover_phase = randf() * TAU
-	await get_tree().process_frame   # Let the Drones group finish populating
-	if not is_inside_tree():
-		return
-	_enter_seek()
-	set_physics_process(true)
-
-	hover_time = 0.0
-	linear_damp = 0.0
-	seek_elapsed = 0.0
 
 
 func _enter_hover() -> void:
@@ -254,7 +228,6 @@ func _hover_angle() -> float:
 	var tri := 4.0 * absf(t - 0.5) - 1.0
 	var wobble := sin(hover_time * wobble_freq + wobble_phase) * wobble_amp
 	return -PI / 2.0 + tri * my_arc + wobble
-	
 
 
 # ------------------------------------------------------------- Steering
@@ -345,10 +318,10 @@ func _on_body_entered(body: Node) -> void:
 			if self.is_in_group("Explosive") or closing_speed > impact_tolerance:
 				body.take_damage.emit(1)
 		take_damage.emit(1)
-	
+
 	if closing_speed > impact_tolerance:
 		take_damage.emit(1)
-			
+
 	if _should_retreat(body, closing_speed):
 		_enter_seek()
 
@@ -385,12 +358,11 @@ func _on_released() -> void:
 func destroy():
 	was_destroyed.emit(100)
 	remove_from_group("Drones")
-	remove_from_group("Enemies")
 	set_deferred("freeze", true)
 	$CollisionShape2D.set_deferred("disabled", true)
 	hide()
 	set_deferred("process_mode", PROCESS_MODE_DISABLED)
 
 
-func _on_take_damage(amount: int = 1) -> void:
+func _on_take_damage(_amount: int = 1) -> void:
 	destroy()

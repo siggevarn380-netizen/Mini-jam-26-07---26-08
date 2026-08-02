@@ -13,8 +13,8 @@ extends Drone
 @export_group("Shooter Line")
 @export var shooter_scene: PackedScene
 @export var line_count: int = 4
-@export var line_distance: float = 260.0                    # distancia de la fila frente al jefe
-@export var line_angle_step: float = deg_to_rad(12.0)        # separación angular entre cada tirador
+@export var line_distance: float = 260.0
+@export var line_angle_step: float = deg_to_rad(12.0)
 
 @export_group("Side Chasers")
 @export var chaser_scene: PackedScene
@@ -23,9 +23,9 @@ extends Drone
 
 var _line: Array = []
 var _line_alive: int = 0
+var _resetting_line: bool = false
 var _chaser_timer: Timer
 
-var _resetting_line: bool = false
 
 func _ready() -> void:
 	orbit_boss = null
@@ -42,6 +42,7 @@ func _ready() -> void:
 	_chaser_timer.autostart = true
 	_chaser_timer.timeout.connect(_on_chaser_timer_timeout)
 	add_child(_chaser_timer)
+
 
 func _enter_seek() -> void:
 	incapacitated = false
@@ -72,8 +73,8 @@ func destroy() -> void:
 	for d in get_tree().get_nodes_in_group("Drones"):
 		d.orbit_boss = null
 		d._enter_seek()
-	SceneManager.goto_scene("res://scenes/Boot/epilogue_scene.tscn")
 	super()
+	SceneManager.goto_scene("res://scenes/Boot/epilogue_scene.tscn")
 
 
 func _on_boss_health_died() -> void:
@@ -81,7 +82,7 @@ func _on_boss_health_died() -> void:
 
 
 func _on_boss_health_health_changed(current: int, maximum: int) -> void:
-	if current <= 0: return   # va a morir, destroy() ya se encarga de todo
+	if current <= 0: return
 	_reset_line()
 
 
@@ -111,7 +112,6 @@ func _spawn_line() -> void:
 func _on_line_shooter_destroyed(_reward: int) -> void:
 	_line_alive -= 1
 	if _line_alive <= 0:
-		await get_tree().create_timer(3.0).timeout
 		_reset_line()
 
 
@@ -135,6 +135,5 @@ func _on_chaser_timer_timeout() -> void:
 	if chaser_scene == null or spawner == null: return
 	var left := global_position + Vector2(-chaser_side_offset, 0)
 	var right := global_position + Vector2(chaser_side_offset, 0)
-	var l = spawner.spawn_at(chaser_scene, left)
-	if l:
-		l.boss_immune = true
+	spawner.spawn_at(chaser_scene, left)
+	spawner.spawn_at(chaser_scene, right)

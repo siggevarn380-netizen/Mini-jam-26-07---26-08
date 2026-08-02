@@ -3,13 +3,14 @@
 [ext_resource type="Script" uid="uid://dr47fjs07okhf" path="res://scripts/Boot/testscene.gd" id="1_apyl2"]
 [ext_resource type="PackedScene" uid="uid://ctgt6u8o4kk5w" path="res://scenes/Player/ui.tscn" id="1_uqt3t"]
 [ext_resource type="PackedScene" uid="uid://c0300sep5wrm4" path="res://scenes/Player/player.tscn" id="2_pc5gu"]
-[ext_resource type="PackedScene" uid="uid://dksp2s7hb8jed" path="res://scenes/Enemy/boss.tscn" id="4_ym166"]
 [ext_resource type="Texture2D" uid="uid://coyor6hno1ra7" path="res://scenes/Boot/Graphics/Background_0.png" id="5_lnygm"]
 [ext_resource type="Texture2D" uid="uid://bl0s8cew6tv0l" path="res://scenes/Boot/Graphics/Terrain.png" id="5_ntklq"]
 [ext_resource type="Texture2D" uid="uid://cj1kvxr7n5rtb" path="res://scenes/Boot/Graphics/Background_1.png" id="6_i10l6"]
 [ext_resource type="Texture2D" uid="uid://dh7fp6uydj8p5" path="res://scenes/Boot/Graphics/Background_2.png" id="7_apyl2"]
 [ext_resource type="Texture2D" uid="uid://7w7msiu3idtf" path="res://scenes/Boot/Graphics/Background_3.png" id="8_1r57d"]
+[ext_resource type="PackedScene" uid="uid://dep8jb0h4ur6u" path="res://scenes/Enemy/drone_spawner.tscn" id="10_apyl2"]
 [ext_resource type="PackedScene" uid="uid://dga8etnliag8i" path="res://scenes/Player/pause_menu.tscn" id="11_1r57d"]
+[ext_resource type="PackedScene" uid="uid://b725ra5qsjmq1" path="res://scenes/heart.tscn" id="11_ooryo"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_i10l6"]
 
@@ -86,5 +87,42 @@ visible = false
 [node name="PlayerSpawnPoint" type="Marker2D" parent="." unique_id=1962761582]
 position = Vector2(-494, 931)
 
-[node name="Boss2" parent="." unique_id=372726181 instance=ExtResource("4_ym166")]
-position = Vector2(1620, 536)
+[node name="Timer" type="Timer" parent="." unique_id=52475409]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="BossSpawnPoint" type="Marker2D" parent="." unique_id=303792297]
+position = Vector2(1060, -414)
+
+[node name="Heart" parent="." unique_id=1212960953 instance=ExtResource("11_ooryo")]
+position = Vector2(2002, 915)
+
+[node name="Heart2" parent="." unique_id=132236428 instance=ExtResource("11_ooryo")]
+position = Vector2(2624, 923)
+
+[node name="Heart3" parent="." unique_id=2022447792 instance=ExtResource("11_ooryo")]
+position = Vector2(16, 899)
+
+[node name="Heart4" parent="." unique_id=606065360 instance=ExtResource("11_ooryo")]
+position = Vector2(-583, 907)
+
+[node name="Spawners" type="Node2D" parent="." unique_id=290544832]
+
+[node name="drone_spawner" parent="Spawners" unique_id=445609616 instance=ExtResource("10_apyl2")]
+position = Vector2(2096, 349)
+spawn_interval = 10.0
+
+[node name="drone_spawner2" parent="Spawners" unique_id=1299152594 instance=ExtResource("10_apyl2")]
+position = Vector2(1273, 231)
+spawn_interval = 5.0
+
+[node name="drone_spawner3" parent="Spawners" unique_id=2094210663 instance=ExtResource("10_apyl2")]
+position = Vector2(-319, 379)
+spawn_interval = 5.0
+
+[node name="drone_spawner4" parent="Spawners" unique_id=86382858 instance=ExtResource("10_apyl2")]
+position = Vector2(-1018, 604)
+spawn_interval = 10.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c07g8c5nn10x" path="res://scripts/Enemies/boss.gd" id="1_mg28n"]
 [ext_resource type="PackedScene" uid="uid://bukvbovhsk3kf" path="res://scenes/Enemy/boss_line_shooter.tscn" id="2_dxuxr"]
-[ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="2_mracn"]
+[ext_resource type="PackedScene" uid="uid://dh5rkuxtoa5c7" path="res://scenes/Enemy/boss_side_chaser.tscn" id="3_dxuxr"]
 [ext_resource type="Script" uid="uid://buqogce7msle7" path="res://scripts/Enemies/boss_health.gd" id="3_f0tbp"]
-[ext_resource type="PackedScene" uid="uid://b13hogkw18sou" path="res://scenes/Enemy/chaser_drone.tscn" id="3_oo7yl"]
+[ext_resource type="Texture2D" uid="uid://dm6ytb7cgyy5s" path="res://Textures/BigMama.png" id="4_dxuxr"]
 [ext_resource type="Script" uid="uid://c8lkd6o8tlk1x" path="res://scripts/Misc/drone_spawner.gd" id="6_dxuxr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cassd"]
@@ -26,7 +26,7 @@ flock_orbit_radius = 300.0
 flock_max_charges = 0
 flock_ring_spacing = 40.0
 shooter_scene = ExtResource("2_dxuxr")
-chaser_scene = ExtResource("3_oo7yl")
+chaser_scene = ExtResource("3_dxuxr")
 sep_field = NodePath("SeparationField")
 comp_timer = NodePath("ComposureTimer")
 speed = 250.0
@@ -41,7 +41,7 @@ enemy_layer_mask = 16
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2003352940]
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("2_mracn")
+texture = ExtResource("4_dxuxr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1969764669]
 shape = SubResource("CircleShape2D_cassd")

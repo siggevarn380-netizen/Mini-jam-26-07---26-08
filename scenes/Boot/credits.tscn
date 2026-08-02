@@ -110,6 +110,26 @@ theme_override_font_sizes/font_size = 32
 text = "Made by:"
 vertical_alignment = 1
 
+[node name="Label3" type="Label" parent="TextureRect/Panel" unique_id=773636010]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -472.5
+offset_top = 276.0
+offset_right = 288.5
+offset_bottom = 789.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_xaddb")
+theme_override_font_sizes/font_size = 32
+text = "Windwardpen
+
+SodaGummy
+
+Pyreau
+
+Legolas1550"
+
 [node name="BackButton" type="Button" parent="TextureRect/Panel" unique_id=1582678365]
 layout_mode = 1
 anchors_preset = 2
