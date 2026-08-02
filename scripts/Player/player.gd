@@ -79,7 +79,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	graphics.set_velocity(velocity)
 	
-	power.moving = absf(velocity.x) >= 10.0
+
 
 func _handle_speed(sprinting: bool, using_powers: bool) -> float:
 	if using_powers: return power_use_speed
@@ -89,9 +89,9 @@ func _handle_speed(sprinting: bool, using_powers: bool) -> float:
 
 func add_potency(amount: float) -> void:
 	PlayerData.score += amount
-	power.max_size += amount
+	power.set_radius(power.radius + amount)
 	power_range += amount
-	print("max size: ", power.max_size, "max range: ", power_range)
+	print("radius: ", power.radius, " range: ", power_range)
 
 func add_heart(amount: int) -> void:
 	PlayerData.score += 10

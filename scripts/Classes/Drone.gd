@@ -352,6 +352,7 @@ func _on_released() -> void:
 func destroy():
 	was_destroyed.emit(100)
 	remove_from_group("Drones")
+	remove_from_group("Enemies")
 	set_deferred("freeze", true)
 	$CollisionShape2D.set_deferred("disabled", true)
 	hide()

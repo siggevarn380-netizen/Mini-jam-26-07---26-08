@@ -54,9 +54,8 @@ gravity_point_unit_distance = 1.0
 script = ExtResource("3_qhqgy")
 rShape = NodePath("CollisionShape2D")
 sprite = NodePath("Sprite2D")
-start_size = 10.0
-start_max = 40.0
-strength = 80000.0
+radius = 100.0
+capture_ratio = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PowerCenter" unique_id=1687828294]
 z_index = 1
