@@ -47,8 +47,11 @@ func _physics_process(delta: float) -> void:
 		var to_mouse = get_global_mouse_position() - global_position
 		var pos = global_position + to_mouse.limit_length(power_range)
 		power._apply_power(pos)
+		graphics.set_power_use(true)
+		
 	else:
 		power._disable_power()
+		graphics.set_power_use(false)
 	# [CALCULATIONS]
 	var speed = _handle_speed(sprinting, using_powers)
 	var target_vel = speed * direction if direction else 0.0

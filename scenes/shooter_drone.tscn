@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dvwkmnj5uk4qt" path="res://scripts/Enemies/shooter_drone.gd" id="1_gwof2"]
 [ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="2_kqdat"]
 [ext_resource type="AudioStream" uid="uid://cucx0e5asww1o" path="res://SFX/DroneLaser1.wav" id="3_kqdat"]
+[ext_resource type="Texture2D" uid="uid://dxuyw2ntotuc2" path="res://scenes/Enemy/EnemyGraphics/BeeDrones.png" id="4_4l1l8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_etm3g"]
 friction = 0.0
@@ -29,6 +30,7 @@ comp_timer = NodePath("ComposureTimer")
 dist_bias = 300.0
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1521908960]
+visible = false
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_kqdat")
 
@@ -58,6 +60,11 @@ position = Vector2(0, 20)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=793300656]
 stream = ExtResource("3_kqdat")
+
+[node name="BeeDrones" type="Sprite2D" parent="." unique_id=1135058819]
+rotation = -1.5707964
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_4l1l8")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="take_damage" from="." to="." method="_on_take_damage"]
