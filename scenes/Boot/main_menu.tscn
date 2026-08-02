@@ -9,7 +9,41 @@
 [ext_resource type="Texture2D" uid="uid://dg1fv3qdi4xg2" path="res://Textures/Background/Background_3.png" id="5_ygikv"]
 [ext_resource type="Texture2D" uid="uid://c64agm577a4c4" path="res://Textures/Border.png" id="6_7qhfh"]
 [ext_resource type="FontFile" uid="uid://xkowvxhre3s3" path="res://Fonts/Audiowide,Bungee_Hairline,Pixelify_Sans/Audiowide/Audiowide-Regular.ttf" id="7_gxkrn"]
-[ext_resource type="Texture2D" uid="uid://c2fj61epvuiv0" path="res://Textures/Button1.png" id="8_fjr30"]
+[ext_resource type="Texture2D" uid="uid://ckv0oprumdw58" path="res://Textures/start_pressed.png" id="8_gxkrn"]
+[ext_resource type="Texture2D" uid="uid://cxkewvyjk5myb" path="res://Textures/start_hovered.png" id="9_fjr30"]
+[ext_resource type="Texture2D" uid="uid://3cju37mtbpna" path="res://Textures/start.png" id="10_vwp7p"]
+[ext_resource type="Texture2D" uid="uid://bg4dbe10gbwxm" path="res://Textures/exit_pressed.png" id="11_8dggr"]
+[ext_resource type="Texture2D" uid="uid://dby8fnxyg22b" path="res://Textures/exit_hovered.png" id="12_4xf0g"]
+[ext_resource type="Texture2D" uid="uid://b78om300lth2e" path="res://Textures/exit.png" id="13_1ua8t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ptdg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kpcvt"]
+texture = ExtResource("10_vwp7p")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a2717"]
+texture = ExtResource("8_gxkrn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hasb5"]
+texture = ExtResource("9_fjr30")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tuy43"]
+texture = ExtResource("10_vwp7p")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mhljg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_poq3g"]
+texture = ExtResource("13_1ua8t")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cqbdq"]
+texture = ExtResource("11_8dggr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_os3jv"]
+texture = ExtResource("12_4xf0g")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eimar"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pdj4p"]
 
 [node name="MainMenu" type="Control" unique_id=1959358356]
 layout_mode = 3
@@ -88,22 +122,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_7qhfh")
 
-[node name="Label" type="Label" parent="Pannel" unique_id=294930682]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -289.0
-offset_top = 242.0
-offset_right = 284.0
-offset_bottom = 311.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("7_gxkrn")
-theme_override_font_sizes/font_size = 50
-text = "Minds And Machines"
-horizontal_alignment = 1
-
 [node name="ButtonPannel" type="Panel" parent="Pannel" unique_id=805979263]
 layout_mode = 1
 anchors_preset = 8
@@ -111,49 +129,57 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -223.0
-offset_right = 250.0
-offset_bottom = 300.0
+offset_left = -174.0
+offset_top = 145.0
+offset_right = 182.0
+offset_bottom = 571.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8ptdg")
 
 [node name="StartButton" type="Button" parent="Pannel/ButtonPannel" unique_id=1454172594]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -68.0
-offset_top = 76.0
-offset_right = 68.0
-offset_bottom = 212.0
+offset_left = -205.0
+offset_top = 83.0
+offset_right = 206.0
+offset_bottom = 163.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_gxkrn")
 theme_override_font_sizes/font_size = 20
-text = "Start"
-icon = ExtResource("8_fjr30")
-flat = true
+theme_override_styles/normal = SubResource("StyleBoxTexture_kpcvt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_a2717")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hasb5")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_tuy43")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mhljg")
 icon_alignment = 1
 
 [node name="ExitButton" type="Button" parent="Pannel/ButtonPannel" unique_id=378847239]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -68.0
-offset_top = -203.0
-offset_right = 68.0
-offset_bottom = -67.0
+offset_left = -165.0
+offset_top = -194.0
+offset_right = 153.0
+offset_bottom = -114.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_gxkrn")
 theme_override_font_sizes/font_size = 20
-text = "Exit"
-icon = ExtResource("8_fjr30")
+theme_override_styles/normal = SubResource("StyleBoxTexture_poq3g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_cqbdq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_os3jv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_eimar")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pdj4p")
 icon_alignment = 1
 
 [node name="MenuMusic" type="AudioStreamPlayer2D" parent="." unique_id=1937414148]
