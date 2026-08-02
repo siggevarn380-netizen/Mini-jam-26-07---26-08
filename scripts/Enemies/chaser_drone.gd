@@ -16,6 +16,8 @@ const CHARGE := State._NEXT
 
 var charge_elapsed: float = 0.0
 
+@onready var dragonfly_wings: Sprite2D = $DragonflyWings
+
 
 func _physics_process(delta: float) -> void:
 	if state == CHARGE:
@@ -69,3 +71,7 @@ func _enter_charge() -> void:
 	linear_damp = 0.0
 	# Overwrite velocity outright — any leftover sideways drift would curve the dash.
 	linear_velocity = (target.global_position - global_position).normalized() * charge_speed
+	change_wings_red()
+
+func change_wings_red():
+	dragonfly_wings.material.set_shader_parameter("is_flashing", true) 
