@@ -49,10 +49,12 @@ texture = ExtResource("1_3vyb7")
 script = ExtResource("4_dqkch")
 starting_health = 2
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2015204349]
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=2015204349]
 stream = ExtResource("5_uiqp4")
 autoplay = true
 parameters/looping = true
+
+[node name="SFXs" type="AudioStreamPlayer2D" parent="." unique_id=662597450]
 
 [connection signal="gain_heart" from="." to="PlayerHealth" method="_on_player_gain_heart"]
 [connection signal="take_damage" from="." to="PlayerHealth" method="_on_player_take_damage"]

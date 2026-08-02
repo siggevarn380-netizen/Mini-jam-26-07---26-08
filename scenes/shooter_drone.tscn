@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dvwkmnj5uk4qt" path="res://scripts/Enemies/shooter_drone.gd" id="1_gwof2"]
 [ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="2_kqdat"]
+[ext_resource type="AudioStream" uid="uid://cucx0e5asww1o" path="res://SFX/DroneLaser1.wav" id="3_kqdat"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_etm3g"]
 friction = 0.0
@@ -54,6 +55,9 @@ autostart = true
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=1904653447]
 position = Vector2(0, 20)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=793300656]
+stream = ExtResource("3_kqdat")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="take_damage" from="." to="." method="_on_take_damage"]

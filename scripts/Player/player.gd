@@ -4,6 +4,8 @@ signal take_damage(amount: int)
 signal gain_heart
 signal been_defeated
 
+var track_1 = preload("res://SFX/PickupItem.wav")
+
 @export_group("Nodes")
 @export var power: Area2D
 @export_group("Basic Movement")
@@ -70,3 +72,8 @@ func add_heart(amount: int) -> void:
 	
 func _on_player_health_death() -> void:
 	been_defeated.emit()
+
+func pick_up_item():
+	$SFXs.stream = track_1
+	$SFXs.play()
+	

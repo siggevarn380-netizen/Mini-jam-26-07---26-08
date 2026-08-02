@@ -60,3 +60,4 @@ func _on_fire_timer_timeout() -> void:
 	bullet.speed = bullet_speed
 	bullet.damage = bullet_damage
 	bullet.launch(dir)
+	$AudioStreamPlayer2D.play()
