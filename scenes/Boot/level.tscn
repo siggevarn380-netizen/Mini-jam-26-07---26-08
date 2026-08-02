@@ -4,9 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://c0300sep5wrm4" path="res://scenes/Player/player.tscn" id="2_pc5gu"]
 [ext_resource type="PackedScene" uid="uid://dep8jb0h4ur6u" path="res://scenes/Enemy/drone_spawner.tscn" id="3_1itqp"]
 [ext_resource type="PackedScene" uid="uid://dksp2s7hb8jed" path="res://scenes/Enemy/boss.tscn" id="4_ym166"]
+[ext_resource type="Texture2D" uid="uid://coyor6hno1ra7" path="res://scenes/Boot/Graphics/Background_0.png" id="5_lnygm"]
+[ext_resource type="Texture2D" uid="uid://bl0s8cew6tv0l" path="res://scenes/Boot/Graphics/Terrain.png" id="5_ntklq"]
+[ext_resource type="Texture2D" uid="uid://cj1kvxr7n5rtb" path="res://scenes/Boot/Graphics/Background_1.png" id="6_i10l6"]
+[ext_resource type="Texture2D" uid="uid://dh7fp6uydj8p5" path="res://scenes/Boot/Graphics/Background_2.png" id="7_apyl2"]
+[ext_resource type="Texture2D" uid="uid://7w7msiu3idtf" path="res://scenes/Boot/Graphics/Background_3.png" id="8_1r57d"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1itqp"]
-size = Vector2(2391, 20)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_i10l6"]
 
 [node name="Level" type="Node2D" unique_id=1210367647]
 
@@ -15,14 +19,17 @@ size = Vector2(2391, 20)
 [node name="Player" parent="." unique_id=986072940 instance=ExtResource("2_pc5gu")]
 position = Vector2(980, 1046)
 
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=454575275]
+position = Vector2(-20, -510)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=74926226]
 position = Vector2(-9, 639)
 collision_layer = 2
 collision_mask = 69
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=68484845]
-position = Vector2(1200, 417)
-shape = SubResource("RectangleShape2D_1itqp")
+position = Vector2(1193, 411.00003)
+shape = SubResource("WorldBoundaryShape2D_i10l6")
 
 [node name="drone_spawner" parent="." unique_id=445609616 instance=ExtResource("3_1itqp")]
 position = Vector2(1235, 830)
@@ -34,3 +41,50 @@ spawn_interval = 0.1
 
 [node name="Boss" parent="." unique_id=832595799 instance=ExtResource("4_ym166")]
 position = Vector2(929, -1384)
+
+[node name="Background" type="Node2D" parent="." unique_id=1251398250]
+z_index = -5
+
+[node name="Parallax2D" type="Parallax2D" parent="Background" unique_id=1975039665]
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(1920, 0)
+repeat_times = 2
+
+[node name="Terrain" type="Sprite2D" parent="Background/Parallax2D" unique_id=590192827]
+position = Vector2(960, 544)
+texture = ExtResource("5_lnygm")
+
+[node name="Parallax2D2" type="Parallax2D" parent="Background" unique_id=31098475]
+scroll_scale = Vector2(0.2, 0)
+repeat_size = Vector2(1920, 0)
+repeat_times = 2
+
+[node name="Terrain" type="Sprite2D" parent="Background/Parallax2D2" unique_id=1366242698]
+position = Vector2(960, 544)
+texture = ExtResource("6_i10l6")
+
+[node name="Parallax2D3" type="Parallax2D" parent="Background" unique_id=1396157673]
+scroll_scale = Vector2(0.4, 0)
+repeat_size = Vector2(1920, 0)
+repeat_times = 2
+
+[node name="Terrain" type="Sprite2D" parent="Background/Parallax2D3" unique_id=974220378]
+position = Vector2(960, 536)
+texture = ExtResource("7_apyl2")
+
+[node name="Parallax2D4" type="Parallax2D" parent="Background" unique_id=1004341701]
+scroll_scale = Vector2(0.5, 0)
+repeat_size = Vector2(1920, 0)
+repeat_times = 2
+
+[node name="Terrain" type="Sprite2D" parent="Background/Parallax2D4" unique_id=1817055009]
+position = Vector2(960, 536)
+texture = ExtResource("8_1r57d")
+
+[node name="Parallax2D5" type="Parallax2D" parent="Background" unique_id=1367996307]
+repeat_size = Vector2(1920, 0)
+repeat_times = 2
+
+[node name="Terrain2" type="Sprite2D" parent="Background/Parallax2D5" unique_id=160199886]
+position = Vector2(960, 536)
+texture = ExtResource("5_ntklq")
