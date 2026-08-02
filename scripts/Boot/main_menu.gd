@@ -12,7 +12,7 @@ func _on_start_button_pressed() -> void:
 	$MenuMusic.stop()
 	$StartSound.play()
 	await get_tree().create_timer(2.2).timeout
-	SceneManager.goto_scene("res://scenes/Boot/testscene.tscn")
+	SceneManager.goto_scene("res://scenes/Boot/level.tscn")
 
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()

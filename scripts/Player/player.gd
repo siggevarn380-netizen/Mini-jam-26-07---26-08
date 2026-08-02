@@ -3,6 +3,7 @@ extends CharacterBody2D
 signal take_damage(amount: int)
 signal gain_heart
 signal been_defeated
+signal victory #Emited when the boss is defeated
 
 var track_1 = preload("res://SFX/PickupItem.wav")
 
@@ -103,4 +104,3 @@ func _on_player_health_death() -> void:
 func pick_up_item():
 	$SFXs.stream = track_1
 	$SFXs.play()
-	

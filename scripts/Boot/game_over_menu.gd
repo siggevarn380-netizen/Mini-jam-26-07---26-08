@@ -8,7 +8,7 @@ func _ready() -> void:
 	exit_button.pressed.connect(_exit)
 
 func _restart():
-	SceneManager.goto_scene("res://scenes/Boot/testscene.tscn")
+	SceneManager.goto_scene("res://scenes/Boot/level.tscn")
 
 func _exit():
 	SceneManager.goto_scene("res://scenes/Boot/main_menu.tscn")

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://caktox5hh3nmu"]
 
 [ext_resource type="Script" uid="uid://dmdgyqalx6icl" path="res://scripts/Misc/neurone.gd" id="1_fn5o4"]
-[ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="2_r0hi5"]
+[ext_resource type="Texture2D" uid="uid://jg85coy3ge8w" path="res://Textures/Neurone.png" id="2_r0hi5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cassd"]
 
