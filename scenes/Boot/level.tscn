@@ -17,7 +17,7 @@ position = Vector2(245, 967)
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=74926226]
 position = Vector2(-9, 639)
 collision_layer = 2
-collision_mask = 5
+collision_mask = 69
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=68484845]
 position = Vector2(1200, 417)
@@ -25,3 +25,4 @@ shape = SubResource("RectangleShape2D_1itqp")
 
 [node name="drone_spawner" parent="." unique_id=445609616 instance=ExtResource("3_1itqp")]
 position = Vector2(1765, 186)
+spawn_interval = 1.0

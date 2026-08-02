@@ -35,6 +35,8 @@ Static=""
 <<<<<<<HEADStatic=""
 Drones=""
 Explosive=""
+Power=""
+Projectiles=""
 
 [input]
 
@@ -86,6 +88,7 @@ Sprint={
 2d_physics/layer_4="Power"
 2d_physics/layer_5="sepfield"
 2d_physics/layer_6="Powerups & Coins"
+2d_physics/layer_7="Projectiles"
 
 [physics]
 

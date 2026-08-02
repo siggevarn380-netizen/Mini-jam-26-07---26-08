@@ -7,13 +7,15 @@
 [ext_resource type="AudioStream" uid="uid://mob333w5x8wu" path="res://SFX/Music/DroneMadness.ogg" id="5_uiqp4"]
 [ext_resource type="PackedScene" uid="uid://02c6ttoa3lgd" path="res://scenes/Player/PlayerGraphics/MainCharacterGraphics.tscn" id="6_hvfru"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1itqp"]
+radius = 3.6666667
+height = 35.000004
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
 radius = 82.67
 
 [node name="Player" type="CharacterBody2D" unique_id=986072940 node_paths=PackedStringArray("power") groups=["Player"]]
-collision_mask = 38
+collision_mask = 102
 script = ExtResource("1_g2els")
 power = NodePath("PowerCenter")
 
@@ -22,13 +24,14 @@ visible = false
 texture = ExtResource("1_3vyb7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1745588340]
+position = Vector2(0, -102)
 scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_x15ge")
+shape = SubResource("CapsuleShape2D_1itqp")
 
-[node name="PowerCenter" type="Area2D" parent="." unique_id=2111074893 node_paths=PackedStringArray("rShape", "sprite")]
+[node name="PowerCenter" type="Area2D" parent="." unique_id=2111074893 node_paths=PackedStringArray("rShape", "sprite") groups=["Power"]]
 top_level = true
 collision_layer = 8
-collision_mask = 4
+collision_mask = 68
 gravity_point = true
 gravity_point_unit_distance = 1.0
 script = ExtResource("3_qhqgy")

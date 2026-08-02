@@ -26,6 +26,7 @@ var max_size: float
 func _ready() -> void:
 	rShape.shape.radius = start_size
 	body_exited.connect(_on_body_exited)
+	area_exited.connect(_on_area_exited)
 	max_size = start_max
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,6 +46,10 @@ func _physics_process(delta: float) -> void:
 			var offset = global_position - body.global_position
 			body.apply_central_force((offset * stiffness - body.linear_velocity * damping) * body.mass)
 			body._on_dragged()
+	for area in get_overlapping_areas():
+		if area.is_in_group("Projectiles") and enabled:
+			area._on_dragged()
+			area.global_position = area.global_position.lerp(global_position, 1.0 - exp(-stiffness * 0.01 * delta))
 
 func r_rate() -> float:
 	if enabled and !moving: return growth_rate
@@ -54,7 +59,9 @@ func r_rate() -> float:
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Enemies"):
 		body._on_released()
-	
+func _on_area_exited(area: Node2D) -> void:
+	if area.is_in_group("Projectiles"):
+		area._on_released()
 func _apply_power(pos: Vector2) -> void:
 	mouse_pos = pos
 	if !enabled: global_position = mouse_pos

@@ -76,14 +76,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	graphics.set_velocity(velocity)
 	
-	if click:
-		var to_mouse = get_global_mouse_position() - global_position
-		var pos = global_position + to_mouse.limit_length(power_range)
-		power._apply_power(pos)
-		graphics.set_power_use(true)
-	else:
-		power._disable_power()
-		graphics.set_power_use(false)
 	power.moving = absf(velocity.x) >= 10.0
 
 func _handle_speed(sprinting: bool, using_powers: bool) -> float:

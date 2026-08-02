@@ -15,7 +15,7 @@ radius = 64.12
 
 [node name="shooter_drone" type="RigidBody2D" unique_id=821450291 node_paths=PackedStringArray("fire_timer", "muzzle", "sep_field", "comp_timer") groups=["Drones", "Enemies"]]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 71
 input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_etm3g")
 gravity_scale = 0.0
@@ -26,7 +26,7 @@ fire_timer = NodePath("FireTimer")
 muzzle = NodePath("Muzzle")
 sep_field = NodePath("SeparationField")
 comp_timer = NodePath("ComposureTimer")
-dist_bias = 0.35
+dist_bias = 300.0
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1521908960]
 scale = Vector2(0.25, 0.25)
@@ -52,7 +52,6 @@ debug_color = Color(0, 0.6242745, 0.54636544, 0.41960785)
 
 [node name="FireTimer" type="Timer" parent="." unique_id=1252489409 groups=["Enemies"]]
 wait_time = 2.0
-autostart = true
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=1904653447]
 position = Vector2(0, 20)

@@ -6,8 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]
 size = Vector2(126, 20)
 
-[node name="Bullet" type="Area2D" unique_id=1668140257]
-collision_layer = 4
+[node name="Bullet" type="Area2D" unique_id=1668140257 groups=["Projectiles"]]
+collision_layer = 64
 collision_mask = 7
 script = ExtResource("1_y25gk")
 speed = 200.0

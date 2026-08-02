@@ -14,16 +14,17 @@ radius = 64.12
 
 [node name="ChaserDrone" type="RigidBody2D" unique_id=821450291 node_paths=PackedStringArray("sep_field", "comp_timer") groups=["Drones", "Enemies", "Explosive"]]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 71
 input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_etm3g")
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_w207v")
+charge_turn_rate = 1.2217304763960306
 sep_field = NodePath("SeparationField")
-impact_tolerance = 300.0
 comp_timer = NodePath("ComposureTimer")
+impact_tolerance = 300.0
 enemy_layer_mask = 16
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1521908960]
