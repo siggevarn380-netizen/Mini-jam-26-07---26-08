@@ -278,7 +278,11 @@ func _on_body_entered(body: Node) -> void:
 	# Both bodies run this independently and see the same relative closing
 	# speed, so each destroys itself rather than reaching across.
 	var rel = _last_velocity - _velocity_of(body)
-	var to_body = (body.global_position - global_position).normalized()
+	var to_body: Vector2
+	if body.is_in_group("Static"):
+		to_body = _last_velocity.normalized()
+	else:
+		to_body = (body.global_position - global_position).normalized()
 	var closing_speed = rel.dot(to_body)
 
 	if body.is_in_group("Player"):
@@ -329,5 +333,5 @@ func destroy():
 	set_deferred("process_mode", PROCESS_MODE_DISABLED)
 
 
-func _on_take_damage() -> void:
+func _on_take_damage(amount: int = 1) -> void:
 	destroy()
