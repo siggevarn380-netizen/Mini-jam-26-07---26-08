@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 		var diameter = rShape.shape.radius * 2.0
 		sprite.scale = Vector2.ONE * (diameter / sprite.texture.get_width())
 	for body in get_overlapping_bodies():
-		if body.is_in_group("Enemies") and enabled:
+		if body.is_in_group("Enemies") and not body.is_in_group("Boss") and enabled:
 			var offset = global_position - body.global_position
 			body.apply_central_force((offset * stiffness - body.linear_velocity * damping) * body.mass)
 			body._on_dragged()
@@ -57,7 +57,7 @@ func r_rate() -> float:
 	return -growth_rate
 
 func _on_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Enemies"):
+	if body.is_in_group("Enemies") and not body.is_in_group("Boss"):
 		body._on_released()
 func _on_area_exited(area: Node2D) -> void:
 	if area.is_in_group("Projectiles"):

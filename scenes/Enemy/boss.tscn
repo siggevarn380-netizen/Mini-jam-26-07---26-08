@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://dksp2s7hb8jed"]
+
+[ext_resource type="Script" uid="uid://c07g8c5nn10x" path="res://scripts/Enemies/boss.gd" id="1_mg28n"]
+[ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="2_mracn"]
+[ext_resource type="Script" uid="uid://buqogce7msle7" path="res://scripts/Enemies/boss_health.gd" id="3_f0tbp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cassd"]
+radius = 206.1189
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dxuxr"]
+radius = 250.0
+
+[node name="Boss" type="RigidBody2D" unique_id=832595799 node_paths=PackedStringArray("sep_field", "comp_timer") groups=["Boss", "Enemies"]]
+collision_layer = 4
+collision_mask = 7
+mass = 500.0
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("1_mg28n")
+boss_height = 800.0
+flock_orbit_radius = 300.0
+flock_max_charges = 0
+flock_ring_spacing = 40.0
+sep_field = NodePath("SeparationField")
+comp_timer = NodePath("ComposureTimer")
+speed = 250.0
+accel_gain = 3.0
+hover_freq = 0.3
+hover_arc = 0.436
+max_arc = 0.524
+wobble_amp = 0.052
+sep_radius = 250.0
+impact_tolerance = 700.0
+enemy_layer_mask = 16
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2003352940]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_mracn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1969764669]
+shape = SubResource("CircleShape2D_cassd")
+debug_color = Color(0.99999994, 0.01586979, 0.025254782, 0.41960785)
+
+[node name="SeparationField" type="Area2D" parent="." unique_id=1450334109]
+collision_layer = 4
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SeparationField" unique_id=1738863740]
+shape = SubResource("CircleShape2D_dxuxr")
+debug_color = Color(0.6570752, 0.51661456, 0, 0.41960785)
+
+[node name="ComposureTimer" type="Timer" parent="." unique_id=377821842]
+process_callback = 0
+wait_time = 3.0
+one_shot = true
+
+[node name="boss_health" type="Node2D" parent="." unique_id=649683111]
+script = ExtResource("3_f0tbp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="take_damage" from="." to="." method="_on_take_damage"]
+[connection signal="take_damage" from="." to="boss_health" method="_on_boss_take_damage"]
+[connection signal="died" from="boss_health" to="." method="_on_boss_health_died"]
