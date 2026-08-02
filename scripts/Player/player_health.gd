@@ -8,6 +8,8 @@ signal got_hit
 @export var max_health: int = 10
 @export var invulnerable_time : float = 2.0
 
+@onready var graphics: MainCharacterGraphics = $"../Graphics"
+
 var is_invulnerable = false
 var invulnerable_timer = 0.0
 
@@ -32,6 +34,7 @@ func _on_player_take_damage(amount: int) -> void:
 		health = max_health
 	else: 
 		invulnerable_timer = invulnerable_time
+		graphics.take_damage()
 	update_health_bar()
 	
 func update_health_bar():
