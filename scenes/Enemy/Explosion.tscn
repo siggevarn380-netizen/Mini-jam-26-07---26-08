@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://8mog41aftc1p"]
+
+[ext_resource type="Script" uid="uid://csg41t5sn0iws" path="res://scenes/Enemy/EnemyGraphics/explosion.gd" id="1_t31vq"]
+[ext_resource type="Shader" uid="uid://cor05srunstt6" path="res://scenes/Enemy/EnemyGraphics/explosion.gdshader" id="2_ti3e2"]
+[ext_resource type="Texture2D" uid="uid://dma7orkh28yyy" path="res://scenes/Enemy/EnemyGraphics/rectangle.png" id="3_aea5x"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v72f4"]
+frequency = 0.0038
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_funwi"]
+noise = SubResource("FastNoiseLite_v72f4")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jrpnq"]
+shader = ExtResource("2_ti3e2")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_funwi")
+shader_parameter/progress = 0.0
+shader_parameter/core_color = Color(1, 0.9, 0.4, 1)
+shader_parameter/edge_color = Color(1, 0.2, 0, 1)
+shader_parameter/max_radius = 0.41800001659512
+shader_parameter/ring_thickness = 0.25700001150898
+shader_parameter/clip_threshold = 0.2470000117325
+shader_parameter/edge_softness = 0.1770000084075
+
+[node name="Explosion" type="Sprite2D" unique_id=243203847]
+material = SubResource("ShaderMaterial_jrpnq")
+scale = Vector2(1.21875, 1.21875)
+texture = ExtResource("3_aea5x")
+script = ExtResource("1_t31vq")

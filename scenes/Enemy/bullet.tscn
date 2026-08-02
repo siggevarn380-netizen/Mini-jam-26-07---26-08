@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="1_mkf8s"]
 [ext_resource type="Script" uid="uid://64xc47xxcq77" path="res://scripts/Enemies/bullet.gd" id="1_y25gk"]
-[ext_resource type="Shader" uid="uid://r55drk3jnaiy" path="res://scenes/Enemy/bullet.gdshader" id="3_xbuj7"]
+[ext_resource type="Shader" uid="uid://r55drk3jnaiy" path="res://scenes/Enemy/EnemyGraphics/bullet.gdshader" id="3_xbuj7"]
 [ext_resource type="Texture2D" uid="uid://de5adb4krekf0" path="res://scenes/Enemy/EnemyGraphics/Bullet.png" id="4_k0r1g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]
@@ -13,13 +13,14 @@ frequency = 0.0087
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xbuj7"]
 noise = SubResource("FastNoiseLite_k0r1g")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uvytn"]
 shader = ExtResource("3_xbuj7")
 shader_parameter/base_color = Color(0.15257964, 0.6207341, 0.8858075, 1)
 shader_parameter/wave_color = Color(0.41811687, 0.9999998, 0.9669122, 1)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_xbuj7")
-shader_parameter/wave_speed = 15.0
+shader_parameter/wave_speed = 1.02800004883
 shader_parameter/wave_amplitude = 0.0
 shader_parameter/noise_scale = 1.0
 
