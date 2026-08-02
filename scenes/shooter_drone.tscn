@@ -26,6 +26,7 @@ fire_timer = NodePath("FireTimer")
 muzzle = NodePath("Muzzle")
 sep_field = NodePath("SeparationField")
 comp_timer = NodePath("ComposureTimer")
+dist_bias = 0.35
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1521908960]
 scale = Vector2(0.25, 0.25)

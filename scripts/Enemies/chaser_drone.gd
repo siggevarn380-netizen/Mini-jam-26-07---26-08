@@ -3,12 +3,14 @@ extends Drone
 const CHARGE := State._NEXT
 
 @export_group("Charge")
-@export var charge_accel: float = 500
+@export var charge_accel: float = 800
+@export var charge_aiming: float = 400
 
 var charge_target: Vector2
 
 func _physics_process(delta: float) -> void:
 	if state == CHARGE:
+		charge_target = charge_target.move_toward(target.global_position, charge_aiming * delta)
 		var dir := (charge_target - global_position).normalized()
 		dir = (dir + _get_separation() * 0.5).normalized()
 		apply_central_force(dir * charge_accel * mass)

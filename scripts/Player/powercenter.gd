@@ -48,8 +48,8 @@ func _physics_process(delta: float) -> void:
 
 func r_rate() -> float:
 	if enabled and !moving: return growth_rate
-	if enabled: return -5.0
-	return -10.0
+	if enabled: return 0.0
+	return -growth_rate
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Enemies"):

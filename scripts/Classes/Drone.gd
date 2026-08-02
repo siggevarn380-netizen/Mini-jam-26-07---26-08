@@ -33,11 +33,14 @@ const REST_ROTATION: float = 0.0
 @export var dist_jitter: float = 0.15     # ±15% radius variation
 @export var wobble_amp: float = deg_to_rad(8.0)
 @export var wobble_freq: float = 3.7      # deliberately not a multiple of hover_freq
+@export var dist_bias: float = 0.0
 @export_group("Avoidance")
 @export var sep_radius: float = 60.0
 @export var separation_weight: float = 0.8   # fraction of `speed`, not a multiplier of it
 @export var avoid_horizon: float = 1.2       # seconds of lookahead
 @export var lateral_bias: float = 2.0        # sideways vs straight-back
+@export_group("Impact")
+@export var knockback_multiplier: float = 1.2
 
 var state = State.SEEK
 var _last_velocity: Vector2 # Stash last speed before impact
@@ -49,6 +52,7 @@ var roll_timer: float = 0.0
 var hover_phase: float = 0.0
 var my_arc: float = 0.0
 var wobble_phase: float = 0.0
+var incapacitated = false
 
 func _ready() -> void:
 	set_physics_process(false)
@@ -98,6 +102,7 @@ func _on_hover_action() -> void:
 	pass
 
 func _enter_seek() -> void:
+	incapacitated = false
 	state = State.SEEK
 	if not is_instance_valid(target):
 		target = get_tree().get_first_node_in_group("Player")
@@ -110,7 +115,7 @@ func _enter_seek() -> void:
 		var ring := idx % ring_count
 		var in_ring := idx / ring_count
 		#var per_ring := maxf(ceilf(float(flock.size()) / float(ring_count)), 1)
-		hover_dist = (target.power_range * 1.1 + ring * ring_spacing) * (1.0 + randf_range(-dist_jitter, dist_jitter))
+		hover_dist = (target.power_range * 2 + ring * ring_spacing + dist_bias) * (1.0 + randf_range(-dist_jitter, dist_jitter))
 		my_arc = hover_arc * (1.0 + randf_range(-arc_jitter, arc_jitter))
 		my_arc = minf(my_arc, max_arc)
 		hover_phase = randf() * TAU
@@ -189,18 +194,32 @@ func _integrate_forces(body_state: PhysicsDirectBodyState2D) -> void:
 		body_state.angular_velocity = clampf(err * right_stiffness, -max_right_speed, max_right_speed)
 
 func _on_body_entered(body: Node) -> void:
+	var rel = _last_velocity - _velocity_of(body)
 	var to_body = (body.global_position - global_position).normalized()
-	var closing_speed = _last_velocity.dot(to_body)
+	var closing_speed = rel.dot(to_body)
 	if body.is_in_group("Player"):
 		if !body.get_node("PlayerHealth").is_invulnerable:
-			body.take_damage.emit(1)
-	if body.is_in_group("Enemies"):
-		if closing_speed > body.impact_tolerance:
-			body.take_damage.emit()
+			if self.is_in_group("Explosive") or closing_speed > impact_tolerance:
+				body.take_damage.emit(1)
 	if closing_speed > impact_tolerance:
 		take_damage.emit()
+	if _should_retreat(body, closing_speed):
+		_enter_seek()
+	
+	var kick = maxf(closing_speed, 0.0) * knockback_multiplier
+	apply_central_impulse(-to_body * kick * mass)
+		
+func _velocity_of(body: Node) -> Vector2:
+	if body.is_in_group("Player"): return body.velocity
+	if body.is_in_group("Drones"): return body._last_velocity
+	return Vector2.ZERO
+func _should_retreat(body: Node2D, closing_speed: float) -> bool:
+	if incapacitated: return false
+	if body.is_in_group("Static") and closing_speed <= impact_tolerance / 2: return false
+	return true
 
 func _on_dragged() -> void:
+	incapacitated = true
 	state = State.DRAGGED
 func _on_released()     -> void:
 	comp_timer.start()

@@ -11,6 +11,7 @@ var track_1 = preload("res://SFX/PickupItem.wav")
 @export_group("Basic Movement")
 @export var base_speed = 400.0
 @export var sprint_speed = 600.0
+@export var power_use_speed = 250
 @export var accel = 200.0
 @export var max_speed: float = 1000
 @export_group("Jump")
@@ -34,14 +35,25 @@ func _physics_process(delta: float) -> void:
 	var dash = Input.get_axis("Dash_Left", "Dash_Right")
 	var jump = Input.is_action_just_pressed("Jump")
 	var sprinting = Input.is_action_pressed("Sprint")
-	var click = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+	var using_powers = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+	# [CONDITIONS]
+	if using_powers:
+		dash = false
+		jump = false
+		sprinting = false
+		
+		var to_mouse = get_global_mouse_position() - global_position
+		var pos = global_position + to_mouse.limit_length(power_range)
+		power._apply_power(pos)
+	else:
+		power._disable_power()
 	# [CALCULATIONS]
-	var speed = sprint_speed if sprinting else base_speed
+	var speed = _handle_speed(sprinting, using_powers)
 	var target_vel = speed * direction if direction else 0.0
 	# [APPLY]
 	if !is_on_floor():
 		velocity += get_gravity() * delta
-
+	
 	if jump and is_on_floor(): velocity.y = -jump_vel
 	
 	if dash and dash_cooldown_timer == 0.0:
@@ -51,14 +63,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, target_vel, accel)
 	move_and_slide()
 	
-	if click:
-		var to_mouse = get_global_mouse_position() - global_position
-		var pos = global_position + to_mouse.limit_length(power_range)
-		power._apply_power(pos)
-	else:
-		power._disable_power()
-	power.moving = absf(velocity.x) >= 10.0
-		
+func _handle_speed(sprinting: bool, using_powers: bool) -> float:
+	if using_powers: return power_use_speed
+	if sprinting: return sprint_speed
+	return base_speed
 
 func add_potency(amount: float) -> void:
 	PlayerData.score += amount
