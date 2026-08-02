@@ -21,7 +21,9 @@ var track_1 = preload("res://SFX/PickupItem.wav")
 @export_group("Other")
 @export var base_power_range: float = 300
 
+@onready var graphics: MainCharacterGraphics = $Graphics
 
+var is_falling: bool = false
 var dash_cooldown_timer = 0.0
 var power_range = base_power_range
 
@@ -41,22 +43,34 @@ func _physics_process(delta: float) -> void:
 	# [APPLY]
 	if !is_on_floor():
 		velocity += get_gravity() * delta
-
-	if jump and is_on_floor(): velocity.y = -jump_vel
+	else:
+		if is_falling:
+			is_falling = false
+			graphics.land()
+	
+	if jump and is_on_floor(): 
+		velocity.y = -jump_vel
+		is_falling = true
+		graphics.jump()
 	
 	if dash and dash_cooldown_timer == 0.0:
 		velocity.x += dash_speed * dash
 		dash_cooldown_timer = dash_cooldown
+		graphics.dash()
+		
 	else:
 		velocity.x = move_toward(velocity.x, target_vel, accel)
 	move_and_slide()
+	graphics.set_velocity(velocity)
 	
 	if click:
 		var to_mouse = get_global_mouse_position() - global_position
 		var pos = global_position + to_mouse.limit_length(power_range)
 		power._apply_power(pos)
+		graphics.set_power_use(true)
 	else:
 		power._disable_power()
+		graphics.set_power_use(false)
 	power.moving = absf(velocity.x) >= 10.0
 		
 
@@ -72,6 +86,7 @@ func add_heart(amount: int) -> void:
 	
 func _on_player_health_death() -> void:
 	been_defeated.emit()
+	graphics.die()
 
 func pick_up_item():
 	$SFXs.stream = track_1
