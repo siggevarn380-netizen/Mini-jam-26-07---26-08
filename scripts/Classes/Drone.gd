@@ -190,14 +190,13 @@ func _integrate_forces(body_state: PhysicsDirectBodyState2D) -> void:
 
 func _on_body_entered(body: Node) -> void:
 	var to_body = (body.global_position - global_position).normalized()
-	var closing_speed = _last_velocity.dot(to_body)
+	#var closing_speed = _last_velocity.dot(to_body)
 	if body.is_in_group("Player"):
-		if !body.get_node("PlayerHealth").is_invulnerable:
+		if !body.get_node("PlayerHealth").is_invulnerable and state != State.DRAGGED:
 			body.take_damage.emit(1)
 		take_damage.emit()
-	if body.is_in_group("Enemies"):
-		if closing_speed > body.impact_tolerance:
-			body.take_damage.emit()
+	if body.is_in_group("Enemies") and (state == State.DRAGGED or state == State.RELEASED):
+		body.take_damage.emit()
 		take_damage.emit()
 
 func _on_dragged() -> void:

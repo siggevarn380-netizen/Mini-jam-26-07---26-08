@@ -28,11 +28,11 @@ sep_field = NodePath("SeparationField")
 comp_timer = NodePath("ComposureTimer")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1521908960]
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_kqdat")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=701951204]
-scale = Vector2(6, 6)
+scale = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_x15ge")
 debug_color = Color(0.061795115, 0.6345884, 0.41156435, 0.41960785)
 
