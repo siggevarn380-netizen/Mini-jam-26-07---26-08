@@ -1,5 +1,7 @@
 extends Area2D
 
+enum Mode{REPULSOR, CAPTURE}
+
 @export_group("Nodes")
 @export var rShape: CollisionShape2D
 @export var sprite: Node2D
