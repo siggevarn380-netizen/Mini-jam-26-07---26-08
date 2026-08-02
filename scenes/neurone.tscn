@@ -15,6 +15,7 @@ shape = SubResource("CircleShape2D_cassd")
 debug_color = Color(0.9472081, 3.465414e-06, 0.5865005, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2031157703]
+scale = Vector2(0.125, 0.125)
 texture = ExtResource("2_r0hi5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

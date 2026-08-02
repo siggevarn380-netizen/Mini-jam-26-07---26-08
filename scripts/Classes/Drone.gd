@@ -99,6 +99,8 @@ func _ready() -> void:
 	sep_field.get_node("CollisionShape2D").shape.radius = sep_radius
 	hover_phase = randf() * TAU
 	await get_tree().process_frame   # Let the Drones group finish populating
+	if not is_inside_tree():
+		return
 	_enter_seek()
 	set_physics_process(true)
 
@@ -164,6 +166,7 @@ func _on_hover_action() -> void:
 # --------------------------------------------------------- State entry
 
 func _enter_seek() -> void:
+	if not is_inside_tree(): return
 	incapacitated = false
 	state = State.SEEK
 	var found = get_tree().get_first_node_in_group("Boss")
@@ -192,6 +195,31 @@ func _enter_seek() -> void:
 		my_arc = hover_arc * (1.0 + randf_range(-arc_jitter, arc_jitter))
 		my_arc = minf(my_arc, max_arc)
 		wobble_phase = randf() * TAU
+
+	hover_time = 0.0
+	linear_damp = 0.0
+	seek_elapsed = 0.0
+	if is_instance_valid(target):
+		# Ring assignment comes from position in the Drones group, so the
+		# flock spreads across rings without any central coordinator.
+		var flock := get_tree().get_nodes_in_group("Drones")
+		var idx := flock.find(self)
+		if idx < 0:
+			push_warning("%s not in Drones group" % name)
+			idx = 0
+		var ring := idx % ring_count
+
+		if _anchor() == orbit_boss:
+			hover_dist = (orbit_radius + randf_range(-swarm_spread, swarm_spread))
+			hover_phase = TAU * float(idx) / float(maxi(flock.size(), 1)) * swarm_clump + randf_range(-0.3, 0.3)
+		else:
+			hover_dist = (target.power_range * 1.5 + ring * ring_spacing + dist_bias) * (1.0 + randf_range(-dist_jitter, dist_jitter))
+			hover_phase = randf() * TAU
+	await get_tree().process_frame   # Let the Drones group finish populating
+	if not is_inside_tree():
+		return
+	_enter_seek()
+	set_physics_process(true)
 
 	hover_time = 0.0
 	linear_damp = 0.0

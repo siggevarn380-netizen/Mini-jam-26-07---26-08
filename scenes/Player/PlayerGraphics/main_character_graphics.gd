@@ -1,6 +1,7 @@
 class_name MainCharacterGraphics
 extends Node2D
 
+
 @onready var sprites: Node2D = $Sprites
 @onready var skeleton_2d: Skeleton2D = $Skeleton/Skeleton2D
 @onready var skeleton: Node2D = $Skeleton
