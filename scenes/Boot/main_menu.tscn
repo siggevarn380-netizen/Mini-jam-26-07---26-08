@@ -7,14 +7,14 @@
 [ext_resource type="AudioStream" uid="uid://cwwal3kntafju" path="res://SFX/UI/PressStart.wav" id="3_rkb2j"]
 [ext_resource type="Texture2D" uid="uid://7b8vadpv5uj6" path="res://Textures/Background/Background_2.png" id="4_vcd51"]
 [ext_resource type="Texture2D" uid="uid://dg1fv3qdi4xg2" path="res://Textures/Background/Background_3.png" id="5_ygikv"]
-[ext_resource type="Texture2D" uid="uid://c64agm577a4c4" path="res://Textures/Border.png" id="6_7qhfh"]
+[ext_resource type="Texture2D" uid="uid://c4ayuhmo0ekpg" path="res://Textures/TitleArt.png" id="6_gxkrn"]
 [ext_resource type="FontFile" uid="uid://xkowvxhre3s3" path="res://Fonts/Audiowide,Bungee_Hairline,Pixelify_Sans/Audiowide/Audiowide-Regular.ttf" id="7_gxkrn"]
-[ext_resource type="Texture2D" uid="uid://ckv0oprumdw58" path="res://Textures/start_pressed.png" id="8_gxkrn"]
-[ext_resource type="Texture2D" uid="uid://cxkewvyjk5myb" path="res://Textures/start_hovered.png" id="9_fjr30"]
-[ext_resource type="Texture2D" uid="uid://3cju37mtbpna" path="res://Textures/start.png" id="10_vwp7p"]
-[ext_resource type="Texture2D" uid="uid://bg4dbe10gbwxm" path="res://Textures/exit_pressed.png" id="11_8dggr"]
-[ext_resource type="Texture2D" uid="uid://dby8fnxyg22b" path="res://Textures/exit_hovered.png" id="12_4xf0g"]
-[ext_resource type="Texture2D" uid="uid://b78om300lth2e" path="res://Textures/exit.png" id="13_1ua8t"]
+[ext_resource type="Texture2D" uid="uid://btggqx15x1om0" path="res://Textures/start_pressed.png" id="8_gxkrn"]
+[ext_resource type="Texture2D" uid="uid://c8uodtp70tfli" path="res://Textures/start_hovered.png" id="9_fjr30"]
+[ext_resource type="Texture2D" uid="uid://b5wjoikcgm8et" path="res://Textures/start.png" id="10_vwp7p"]
+[ext_resource type="Texture2D" uid="uid://1xvrl4w1t26b" path="res://Textures/exit_pressed.png" id="11_8dggr"]
+[ext_resource type="Texture2D" uid="uid://bjnho11gqwk7l" path="res://Textures/exit_hovered.png" id="12_4xf0g"]
+[ext_resource type="Texture2D" uid="uid://cclu617lpxlt1" path="res://Textures/exit.png" id="13_1ua8t"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ptdg"]
 
@@ -120,7 +120,7 @@ offset_right = 579.0
 offset_bottom = 415.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_7qhfh")
+texture = ExtResource("6_gxkrn")
 
 [node name="ButtonPannel" type="Panel" parent="Pannel" unique_id=805979263]
 layout_mode = 1
