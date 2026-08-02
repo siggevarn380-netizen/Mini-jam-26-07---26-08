@@ -8,13 +8,13 @@ extends Area2D
 @export var start_max: float = 15.0
 @export var strength: float = 40000
 @export var base_follow: float = 600
-@export var stiffness: float = 300.0
-@export var damping_ratio = 0.5
+@export var stiffness: float = 700
+@export var damping_ratio = 0.3
 @onready var damping: float = 2.0 * sqrt(stiffness) * damping_ratio
 @export var growth_rate: float = 20.0
 @export_group("Follow")
-@export var follow_accel: float = 60.0    # spring pull toward mouse
-@export var follow_damp: float = 12.0     # lower = more whip/overshoot
+@export var follow_accel: float = 100.0    # spring pull toward mouse
+@export var follow_damp: float = 7.0     # lower = more whip/overshoot
 @export var max_follow_speed: float = 6000.0
 
 var velocity: Vector2

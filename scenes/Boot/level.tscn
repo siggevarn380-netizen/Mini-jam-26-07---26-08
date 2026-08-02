@@ -1,7 +1,8 @@
-[gd_scene format=3 uid="uid://b4nyfnxjbnuxn"]
+[gd_scene format=3 uid="uid://xpkhnrpw0mxs"]
 
 [ext_resource type="PackedScene" uid="uid://ctgt6u8o4kk5w" path="res://scenes/Player/ui.tscn" id="1_uqt3t"]
 [ext_resource type="PackedScene" uid="uid://c0300sep5wrm4" path="res://scenes/Player/player.tscn" id="2_pc5gu"]
+[ext_resource type="PackedScene" uid="uid://dep8jb0h4ur6u" path="res://scenes/Enemy/drone_spawner.tscn" id="3_1itqp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1itqp"]
 size = Vector2(2391, 20)
@@ -21,3 +22,6 @@ collision_mask = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=68484845]
 position = Vector2(1200, 417)
 shape = SubResource("RectangleShape2D_1itqp")
+
+[node name="drone_spawner" parent="." unique_id=445609616 instance=ExtResource("3_1itqp")]
+position = Vector2(1765, 186)
