@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dr47fjs07okhf" path="res://scripts/Boot/testscene.gd" id="1_apyl2"]
 [ext_resource type="PackedScene" uid="uid://ctgt6u8o4kk5w" path="res://scenes/Player/ui.tscn" id="1_uqt3t"]
 [ext_resource type="PackedScene" uid="uid://c0300sep5wrm4" path="res://scenes/Player/player.tscn" id="2_pc5gu"]
-[ext_resource type="PackedScene" uid="uid://dep8jb0h4ur6u" path="res://scenes/Enemy/drone_spawner.tscn" id="3_1itqp"]
 [ext_resource type="PackedScene" uid="uid://dksp2s7hb8jed" path="res://scenes/Enemy/boss.tscn" id="4_ym166"]
 [ext_resource type="Texture2D" uid="uid://coyor6hno1ra7" path="res://scenes/Boot/Graphics/Background_0.png" id="5_lnygm"]
 [ext_resource type="Texture2D" uid="uid://bl0s8cew6tv0l" path="res://scenes/Boot/Graphics/Terrain.png" id="5_ntklq"]
@@ -33,20 +32,6 @@ collision_mask = 69
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=68484845]
 position = Vector2(1193, 411.00003)
 shape = SubResource("WorldBoundaryShape2D_i10l6")
-
-[node name="drone_spawner" parent="." unique_id=445609616 instance=ExtResource("3_1itqp")]
-position = Vector2(1235, 830)
-spawn_interval = 0.1
-
-[node name="drone_spawner2" parent="." unique_id=480336209 instance=ExtResource("3_1itqp")]
-position = Vector2(709, 850)
-spawn_interval = 0.1
-
-[node name="drone_spawner3" parent="." unique_id=445609617 instance=ExtResource("3_1itqp")]
-position = Vector2(746, 250)
-
-[node name="Boss" parent="." unique_id=832595799 instance=ExtResource("4_ym166")]
-position = Vector2(929, -1384)
 
 [node name="Background" type="Node2D" parent="." unique_id=1251398250]
 z_index = -5
@@ -100,3 +85,6 @@ visible = false
 
 [node name="PlayerSpawnPoint" type="Marker2D" parent="." unique_id=1962761582]
 position = Vector2(-494, 931)
+
+[node name="Boss2" parent="." unique_id=372726181 instance=ExtResource("4_ym166")]
+position = Vector2(1620, 536)

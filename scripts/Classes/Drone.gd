@@ -71,6 +71,7 @@ const REST_ROTATION: float = 0.0
 @export_group("Unused")
 @export var max_hover_dist: float = 2000.0   # Kept for compatibility, never read
 
+@export var boss_immune: bool = false
 
 # ---------------------------------------------------------------- Runtime
 
@@ -106,10 +107,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# Adopt or release the boss the moment one appears or dies.
 	if state != State.DRAGGED and state != State.RELEASED:
-		var boss = get_tree().get_first_node_in_group("Boss")
-		if boss != orbit_boss and boss != self:
-			orbit_boss = boss
-			_enter_seek()
+		if not boss_immune:
+			var boss = get_tree().get_first_node_in_group("Boss")
+			if boss != orbit_boss and boss != self:
+				orbit_boss = boss
+				_enter_seek()
 			
 	match state:
 		State.SEEK:
@@ -166,8 +168,11 @@ func _on_hover_action() -> void:
 func _enter_seek() -> void:
 	incapacitated = false
 	state = State.SEEK
-	var found = get_tree().get_first_node_in_group("Boss")
-	orbit_boss = found if found != self else null
+	if not boss_immune:
+		var found = get_tree().get_first_node_in_group("Boss")
+		orbit_boss = found if found != self else null
+	else:
+		orbit_boss = null
 	if is_instance_valid(orbit_boss) and orbit_boss.has_method("apply_flock_settings"):
 		orbit_boss.apply_flock_settings(self)
 	if not is_instance_valid(target):

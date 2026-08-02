@@ -1,16 +1,19 @@
 [gd_scene format=3 uid="uid://dksp2s7hb8jed"]
 
 [ext_resource type="Script" uid="uid://c07g8c5nn10x" path="res://scripts/Enemies/boss.gd" id="1_mg28n"]
+[ext_resource type="PackedScene" uid="uid://bukvbovhsk3kf" path="res://scenes/Enemy/boss_line_shooter.tscn" id="2_dxuxr"]
 [ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="2_mracn"]
 [ext_resource type="Script" uid="uid://buqogce7msle7" path="res://scripts/Enemies/boss_health.gd" id="3_f0tbp"]
+[ext_resource type="PackedScene" uid="uid://b13hogkw18sou" path="res://scenes/Enemy/chaser_drone.tscn" id="3_oo7yl"]
+[ext_resource type="Script" uid="uid://c8lkd6o8tlk1x" path="res://scripts/Misc/drone_spawner.gd" id="6_dxuxr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cassd"]
-radius = 206.1189
+radius = 165.04848
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dxuxr"]
 radius = 250.0
 
-[node name="Boss" type="RigidBody2D" unique_id=832595799 node_paths=PackedStringArray("sep_field", "comp_timer") groups=["Boss", "Enemies"]]
+[node name="Boss" type="RigidBody2D" unique_id=832595799 node_paths=PackedStringArray("spawner", "sep_field", "comp_timer") groups=["Boss", "Drones", "Enemies"]]
 collision_layer = 4
 collision_mask = 7
 mass = 500.0
@@ -18,9 +21,12 @@ contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_mg28n")
 boss_height = 800.0
+spawner = NodePath("DroneSpawner")
 flock_orbit_radius = 300.0
 flock_max_charges = 0
 flock_ring_spacing = 40.0
+shooter_scene = ExtResource("2_dxuxr")
+chaser_scene = ExtResource("3_oo7yl")
 sep_field = NodePath("SeparationField")
 comp_timer = NodePath("ComposureTimer")
 speed = 250.0
@@ -57,7 +63,11 @@ one_shot = true
 [node name="boss_health" type="Node2D" parent="." unique_id=649683111]
 script = ExtResource("3_f0tbp")
 
+[node name="DroneSpawner" type="Node2D" parent="." unique_id=1582874783]
+script = ExtResource("6_dxuxr")
+metadata/_custom_type_script = "uid://c8lkd6o8tlk1x"
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="take_damage" from="." to="." method="_on_take_damage"]
 [connection signal="take_damage" from="." to="boss_health" method="_on_boss_take_damage"]
 [connection signal="died" from="boss_health" to="." method="_on_boss_health_died"]
+[connection signal="health_changed" from="boss_health" to="." method="_on_boss_health_health_changed"]
