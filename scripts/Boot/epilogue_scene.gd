@@ -2,7 +2,6 @@ extends Control
 
 @export var scenes: Array[VNScene]
 
-@onready var background: TextureRect = $BackGround
 @onready var speaker_label: Label = $TextBox/SpeakerLabel
 @onready var dialogue_text: Label = $TextBox/TextLabel
 @onready var advance_button: Button = $TextBox/AdvanceButton
@@ -15,7 +14,6 @@ func _ready() -> void:
 
 func _show_scene(index: int) -> void:
 	var scene_data := scenes[index]
-	background.texture = scene_data.background
 	dialogue_text.text = scene_data.text
 	
 	speaker_label.text = scene_data.speaker_name

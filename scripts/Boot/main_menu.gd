@@ -1,7 +1,7 @@
 extends Control
 
-@onready var exit_button: Button = $TextureRect/ButtonPannel/ExitButton
-@onready var start_button: Button = $TextureRect/ButtonPannel/StartButton
+@onready var exit_button: Button = $Pannel/ButtonPannel/ExitButton
+@onready var start_button: Button = $Pannel/ButtonPannel/StartButton
 
 
 func _ready() -> void:

@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://dvkert4jed8gm"]
 
 [ext_resource type="Script" uid="uid://8p54k233l450" path="res://scripts/Boot/credits.gd" id="1_nxukm"]
+[ext_resource type="Texture2D" uid="uid://b420c1sc1le8n" path="res://Textures/Background/Background_0.png" id="2_tsejo"]
+[ext_resource type="Texture2D" uid="uid://6g8jfx1jbova" path="res://Textures/Background/Background_1.png" id="3_esfwj"]
+[ext_resource type="Texture2D" uid="uid://7b8vadpv5uj6" path="res://Textures/Background/Background_2.png" id="4_rioay"]
+[ext_resource type="Texture2D" uid="uid://dg1fv3qdi4xg2" path="res://Textures/Background/Background_3.png" id="5_3be1k"]
+[ext_resource type="FontFile" uid="uid://xkowvxhre3s3" path="res://Fonts/Audiowide,Bungee_Hairline,Pixelify_Sans/Audiowide/Audiowide-Regular.ttf" id="6_xaddb"]
+[ext_resource type="Texture2D" uid="uid://c2fj61epvuiv0" path="res://Textures/Button1.png" id="7_3jfrm"]
 
 [node name="Credits" type="Control" unique_id=819791625]
 layout_mode = 3
@@ -10,6 +16,50 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nxukm")
+
+[node name="Control" type="Control" parent="." unique_id=1377157303]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1029472734]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tsejo")
+
+[node name="TextureRect2" type="TextureRect" parent="Control" unique_id=1255984315]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_esfwj")
+
+[node name="TextureRect3" type="TextureRect" parent="Control" unique_id=437652931]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_rioay")
+
+[node name="TextureRect4" type="TextureRect" parent="Control" unique_id=325810123]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_3be1k")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1137958867]
 layout_mode = 1
@@ -39,6 +89,7 @@ offset_top = 30.0
 offset_right = 151.0
 offset_bottom = 75.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_xaddb")
 theme_override_font_sizes/font_size = 32
 text = "Thanks for playing!!"
 horizontal_alignment = 1
@@ -54,6 +105,7 @@ offset_top = 133.0
 offset_right = 39.0
 offset_bottom = 178.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_xaddb")
 theme_override_font_sizes/font_size = 32
 text = "Made by:"
 vertical_alignment = 1
@@ -68,7 +120,13 @@ offset_top = -72.0
 offset_right = 217.0
 offset_bottom = -22.0
 grow_vertical = 0
-text = "Back to menu"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_xaddb")
+text = "Menu"
+icon = ExtResource("7_3jfrm")
+text_overrun_behavior = 2
+autowrap_mode = 2
+icon_alignment = 1
 
 [node name="ExitButton" type="Button" parent="TextureRect/Panel" unique_id=1889798510]
 layout_mode = 1
@@ -83,4 +141,8 @@ offset_right = -19.0
 offset_bottom = -19.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Exit Game"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_xaddb")
+text = "Exit"
+icon = ExtResource("7_3jfrm")
+icon_alignment = 1

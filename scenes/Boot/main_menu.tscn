@@ -2,7 +2,14 @@
 
 [ext_resource type="AudioStream" uid="uid://bgm65a3bl200c" path="res://SFX/Music/DroneVibin.ogg" id="1_65gxy"]
 [ext_resource type="Script" uid="uid://f4cy8acrup0n" path="res://scripts/Boot/main_menu.gd" id="1_y2f25"]
+[ext_resource type="Texture2D" uid="uid://b420c1sc1le8n" path="res://Textures/Background/Background_0.png" id="2_f2nck"]
+[ext_resource type="Texture2D" uid="uid://6g8jfx1jbova" path="res://Textures/Background/Background_1.png" id="3_2c0x4"]
 [ext_resource type="AudioStream" uid="uid://cwwal3kntafju" path="res://SFX/UI/PressStart.wav" id="3_rkb2j"]
+[ext_resource type="Texture2D" uid="uid://7b8vadpv5uj6" path="res://Textures/Background/Background_2.png" id="4_vcd51"]
+[ext_resource type="Texture2D" uid="uid://dg1fv3qdi4xg2" path="res://Textures/Background/Background_3.png" id="5_ygikv"]
+[ext_resource type="Texture2D" uid="uid://c64agm577a4c4" path="res://Textures/Border.png" id="6_7qhfh"]
+[ext_resource type="FontFile" uid="uid://xkowvxhre3s3" path="res://Fonts/Audiowide,Bungee_Hairline,Pixelify_Sans/Audiowide/Audiowide-Regular.ttf" id="7_gxkrn"]
+[ext_resource type="Texture2D" uid="uid://c2fj61epvuiv0" path="res://Textures/Button1.png" id="8_fjr30"]
 
 [node name="MainMenu" type="Control" unique_id=1959358356]
 layout_mode = 3
@@ -13,16 +20,60 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_y2f25")
 
-[node name="BackgroundColour" type="ColorRect" parent="." unique_id=2053524935]
+[node name="Control" type="Control" parent="." unique_id=853616236]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0.05490196, 1)
 
-[node name="TextureRect" type="ColorRect" parent="." unique_id=1367845000]
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=2123159271]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_f2nck")
+
+[node name="TextureRect2" type="TextureRect" parent="Control" unique_id=428315716]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2c0x4")
+
+[node name="TextureRect3" type="TextureRect" parent="Control" unique_id=709292540]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_vcd51")
+
+[node name="TextureRect4" type="TextureRect" parent="Control" unique_id=15583907]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_ygikv")
+
+[node name="Background" type="ColorRect" parent="." unique_id=2053524935]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.05490196, 0.3372549)
+
+[node name="Pannel" type="TextureRect" parent="." unique_id=2132196395]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -35,23 +86,25 @@ offset_right = 579.0
 offset_bottom = 415.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("6_7qhfh")
 
-[node name="Label" type="Label" parent="TextureRect" unique_id=294930682]
+[node name="Label" type="Label" parent="Pannel" unique_id=294930682]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -245.0
-offset_top = 27.0
-offset_right = 239.0
-offset_bottom = 96.0
+offset_left = -289.0
+offset_top = 242.0
+offset_right = 284.0
+offset_bottom = 311.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_gxkrn")
 theme_override_font_sizes/font_size = 50
-text = "Mind  Over Machine"
+text = "Minds And Machines"
 horizontal_alignment = 1
 
-[node name="ButtonPannel" type="Panel" parent="TextureRect" unique_id=805979263]
+[node name="ButtonPannel" type="Panel" parent="Pannel" unique_id=805979263]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -59,40 +112,48 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -250.0
-offset_top = -300.0
+offset_top = -223.0
 offset_right = 250.0
 offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="StartButton" type="Button" parent="TextureRect/ButtonPannel" unique_id=1454172594]
+[node name="StartButton" type="Button" parent="Pannel/ButtonPannel" unique_id=1454172594]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -100.0
-offset_top = 39.0
-offset_right = 100.0
-offset_bottom = 114.0
+offset_left = -68.0
+offset_top = 76.0
+offset_right = 68.0
+offset_bottom = 212.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_gxkrn")
 theme_override_font_sizes/font_size = 20
 text = "Start"
+icon = ExtResource("8_fjr30")
+flat = true
+icon_alignment = 1
 
-[node name="ExitButton" type="Button" parent="TextureRect/ButtonPannel" unique_id=378847239]
+[node name="ExitButton" type="Button" parent="Pannel/ButtonPannel" unique_id=378847239]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -114.0
-offset_right = 100.0
-offset_bottom = -39.0
+offset_left = -68.0
+offset_top = -203.0
+offset_right = 68.0
+offset_bottom = -67.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Exit"
+icon = ExtResource("8_fjr30")
+icon_alignment = 1
 
 [node name="MenuMusic" type="AudioStreamPlayer2D" parent="." unique_id=1937414148]
 stream = ExtResource("1_65gxy")

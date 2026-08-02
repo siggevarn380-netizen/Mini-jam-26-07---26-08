@@ -10,6 +10,7 @@ extends RigidBody2D
 # and may define extra states starting at State._NEXT.
 
 signal take_damage(amount)
+signal was_destroyed(reward: int)
 
 enum State {SEEK, HOVER, DRAGGED, RELEASED, _NEXT}
 
@@ -310,11 +311,11 @@ func _on_body_entered(body: Node) -> void:
 		if !body.get_node("PlayerHealth").is_invulnerable:
 			if self.is_in_group("Explosive") or closing_speed > impact_tolerance:
 				body.take_damage.emit(1)
-
+		take_damage.emit(1)
+	
 	if closing_speed > impact_tolerance:
 		take_damage.emit(1)
 			
-
 	if _should_retreat(body, closing_speed):
 		_enter_seek()
 
@@ -349,6 +350,7 @@ func _on_released() -> void:
 
 
 func destroy():
+	was_destroyed.emit(100)
 	remove_from_group("Drones")
 	set_deferred("freeze", true)
 	$CollisionShape2D.set_deferred("disabled", true)

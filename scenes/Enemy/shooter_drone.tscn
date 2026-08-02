@@ -26,6 +26,7 @@ max_contacts_reported = 1
 script = ExtResource("1_e00ho")
 fire_timer = NodePath("FireTimer")
 muzzle = NodePath("Muzzle")
+seek_shot_speed = 3.0
 sep_field = NodePath("SeparationField")
 comp_timer = NodePath("ComposureTimer")
 dist_bias = 300.0
