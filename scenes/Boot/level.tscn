@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://xpkhnrpw0mxs"]
 
+[ext_resource type="Script" uid="uid://dr47fjs07okhf" path="res://scripts/Boot/testscene.gd" id="1_apyl2"]
 [ext_resource type="PackedScene" uid="uid://ctgt6u8o4kk5w" path="res://scenes/Player/ui.tscn" id="1_uqt3t"]
 [ext_resource type="PackedScene" uid="uid://c0300sep5wrm4" path="res://scenes/Player/player.tscn" id="2_pc5gu"]
 [ext_resource type="PackedScene" uid="uid://dep8jb0h4ur6u" path="res://scenes/Enemy/drone_spawner.tscn" id="3_1itqp"]
@@ -9,10 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://cj1kvxr7n5rtb" path="res://scenes/Boot/Graphics/Background_1.png" id="6_i10l6"]
 [ext_resource type="Texture2D" uid="uid://dh7fp6uydj8p5" path="res://scenes/Boot/Graphics/Background_2.png" id="7_apyl2"]
 [ext_resource type="Texture2D" uid="uid://7w7msiu3idtf" path="res://scenes/Boot/Graphics/Background_3.png" id="8_1r57d"]
+[ext_resource type="PackedScene" uid="uid://dga8etnliag8i" path="res://scenes/Player/pause_menu.tscn" id="11_1r57d"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_i10l6"]
 
 [node name="Level" type="Node2D" unique_id=1210367647]
+script = ExtResource("1_apyl2")
 
 [node name="UI" parent="." unique_id=1353638227 instance=ExtResource("1_uqt3t")]
 
@@ -88,3 +91,9 @@ repeat_times = 2
 [node name="Terrain2" type="Sprite2D" parent="Background/Parallax2D5" unique_id=160199886]
 position = Vector2(960, 536)
 texture = ExtResource("5_ntklq")
+
+[node name="PauseMenu" parent="." unique_id=1993781402 instance=ExtResource("11_1r57d")]
+visible = false
+
+[node name="PlayerSpawnPoint" type="Marker2D" parent="." unique_id=1962761582]
+position = Vector2(-494, 931)
