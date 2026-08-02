@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.7", "GL Compatibility")
 
 PlayerData="*uid://dc3h7xc8o0fh0"
 SceneManager="*uid://lk6xp1wh2tt4"
+PlaceholderAutoload="*uid://dgoss0ap3ykq2"
 
 [display]
 

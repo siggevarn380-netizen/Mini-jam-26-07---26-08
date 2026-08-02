@@ -42,6 +42,9 @@ spawn_interval = 0.1
 position = Vector2(709, 850)
 spawn_interval = 0.1
 
+[node name="drone_spawner3" parent="." unique_id=445609617 instance=ExtResource("3_1itqp")]
+position = Vector2(746, 250)
+
 [node name="Boss" parent="." unique_id=832595799 instance=ExtResource("4_ym166")]
 position = Vector2(929, -1384)
 
