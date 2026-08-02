@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://blq16e2uiwpus"]
 
 [ext_resource type="AudioStream" uid="uid://bgm65a3bl200c" path="res://SFX/Music/DroneVibin.ogg" id="1_65gxy"]
-[ext_resource type="Script" uid="uid://f4cy8acrup0n" path="res://scripts/main_menu.gd" id="1_y2f25"]
+[ext_resource type="Script" uid="uid://f4cy8acrup0n" path="res://scripts/Boot/main_menu.gd" id="1_y2f25"]
+[ext_resource type="AudioStream" uid="uid://cwwal3kntafju" path="res://SFX/UI/PressStart.wav" id="3_rkb2j"]
 
 [node name="MainMenu" type="Control" unique_id=1959358356]
 layout_mode = 3
@@ -93,7 +94,10 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 20
 text = "Exit"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1937414148]
+[node name="MenuMusic" type="AudioStreamPlayer2D" parent="." unique_id=1937414148]
 stream = ExtResource("1_65gxy")
 autoplay = true
 parameters/looping = true
+
+[node name="StartSound" type="AudioStreamPlayer2D" parent="." unique_id=1643519113]
+stream = ExtResource("3_rkb2j")

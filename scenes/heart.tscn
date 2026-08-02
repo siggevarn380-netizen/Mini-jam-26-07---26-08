@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b725ra5qsjmq1"]
 
 [ext_resource type="Script" uid="uid://d1cppt2oyt04x" path="res://scripts/Misc/heart.gd" id="1_v30as"]
+[ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="2_ycbwg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cassd"]
 
@@ -11,5 +12,8 @@ script = ExtResource("1_v30as")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=385355882]
 shape = SubResource("CircleShape2D_cassd")
 debug_color = Color(0.8991222, 0, 0.08863605, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=17170000]
+texture = ExtResource("2_ycbwg")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,7 +1,6 @@
 class_name Drone
 extends RigidBody2D
 signal take_damage()
-signal toggle_powers
 
 enum State{SEEK, HOVER, DRAGGED, RELEASED, _NEXT}
 
@@ -110,7 +109,7 @@ func _enter_seek() -> void:
 			idx = 0
 		var ring := idx % ring_count
 		var in_ring := idx / ring_count
-		var per_ring := maxi(ceili(float(flock.size()) / float(ring_count)), 1)
+		#var per_ring := maxf(ceilf(float(flock.size()) / float(ring_count)), 1)
 		hover_dist = (target.power_range * 1.1 + ring * ring_spacing) * (1.0 + randf_range(-dist_jitter, dist_jitter))
 		my_arc = hover_arc * (1.0 + randf_range(-arc_jitter, arc_jitter))
 		my_arc = minf(my_arc, max_arc)
@@ -199,6 +198,7 @@ func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("Enemies"):
 		if closing_speed > body.impact_tolerance:
 			body.take_damage.emit()
+		take_damage.emit()
 
 func _on_dragged() -> void:
 	state = State.DRAGGED

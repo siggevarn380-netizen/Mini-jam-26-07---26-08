@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dpuu5nam5mnju"]
 
-[ext_resource type="Script" uid="uid://bthp8ffjqx2p" path="res://scripts/epilogue_scene.gd" id="1_uuia0"]
+[ext_resource type="Script" uid="uid://bthp8ffjqx2p" path="res://scripts/Boot/epilogue_scene.gd" id="1_uuia0"]
 [ext_resource type="Script" uid="uid://b4v35mxawei6w" path="res://Resource/VNScene.gd" id="2_i2mpl"]
 [ext_resource type="Resource" uid="uid://da1mpvgfv24il" path="res://Resource/1.tres" id="3_c661o"]
 [ext_resource type="Resource" uid="uid://bx8nvb78ggjl1" path="res://Resource/2.tres" id="4_w5pab"]

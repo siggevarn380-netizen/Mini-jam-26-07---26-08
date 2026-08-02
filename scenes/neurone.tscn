@@ -1,15 +1,20 @@
 [gd_scene format=3 uid="uid://caktox5hh3nmu"]
 
 [ext_resource type="Script" uid="uid://dmdgyqalx6icl" path="res://scripts/Misc/neurone.gd" id="1_fn5o4"]
+[ext_resource type="Texture2D" uid="uid://cdblis5o1ublq" path="res://icon.svg" id="2_r0hi5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cassd"]
 
 [node name="Neurone" type="Area2D" unique_id=1212960953]
 collision_layer = 32
 script = ExtResource("1_fn5o4")
+type = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=385355882]
 shape = SubResource("CircleShape2D_cassd")
 debug_color = Color(0.9472081, 3.465414e-06, 0.5865005, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2031157703]
+texture = ExtResource("2_r0hi5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

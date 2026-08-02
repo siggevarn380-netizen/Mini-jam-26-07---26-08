@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dga8etnliag8i"]
 
-[ext_resource type="Script" uid="uid://bt5t765d5cf1v" path="res://scripts/pause_menu.gd" id="1_w75xt"]
+[ext_resource type="Script" uid="uid://bt5t765d5cf1v" path="res://scripts/Player/pause_menu.gd" id="1_w75xt"]
+[ext_resource type="AudioStream" uid="uid://bltxd2m6uwexi" path="res://SFX/Music/DroneMadnessPauseMenu.ogg" id="2_ly3j3"]
 
 [node name="PauseMenu" type="CanvasLayer" unique_id=1993781402]
 process_mode = 3
@@ -74,3 +75,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 40
 text = "Exit"
+
+[node name="PauseMenuMusic" type="AudioStreamPlayer2D" parent="." unique_id=2116041756]
+stream = ExtResource("2_ly3j3")
+autoplay = true
+parameters/looping = true
+
+[node name="MenuSFXs" type="AudioStreamPlayer2D" parent="." unique_id=1895029487]

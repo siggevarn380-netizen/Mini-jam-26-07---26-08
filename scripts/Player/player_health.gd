@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 
 func _ready() -> void:
 	await get_tree().process_frame
-	health = 2
+	health = 8
 	update_health_bar()
 
 func _on_player_take_damage(amount: int) -> void:
@@ -29,7 +29,7 @@ func _on_player_take_damage(amount: int) -> void:
 	got_hit.emit()
 	if health == 0:
 		death.emit()
-		health = max_health/2
+		health = max_health
 	else: 
 		invulnerable_timer = invulnerable_time
 	update_health_bar()
@@ -40,4 +40,3 @@ func update_health_bar():
 func _on_player_gain_heart(amount: int) -> void:
 	health += amount
 	update_health_bar()
-	print(health, " lives remaining.")

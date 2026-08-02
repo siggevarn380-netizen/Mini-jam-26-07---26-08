@@ -31,7 +31,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	rShape.shape.radius = clampf(rShape.shape.radius + r_rate() * delta, 0.0, max_size)
-	var follow = base_follow if moving else base_follow * 2
+	#var follow = base_follow if moving else base_follow * 2
 	if enabled:
 		var to_mouse = mouse_pos - global_position
 		velocity += to_mouse * follow_accel * delta

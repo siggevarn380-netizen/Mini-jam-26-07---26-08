@@ -16,5 +16,5 @@ func _respawn_player():
 	if player_lives > 0:
 		$Player.position = player_spawn_point.position
 	else:
-		SceneManager.goto_scene("res://scenes/Boot/main_menu.tscn")
+		SceneManager.goto_scene("res://scenes/Boot/game_over_menu.tscn")
 	
